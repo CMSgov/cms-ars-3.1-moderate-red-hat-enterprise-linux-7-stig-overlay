@@ -1,0 +1,14 @@
+name: cms-ars3.1-cis-aws-foundations-baseline
+title: cms-ars3.1-cis-aws-foundations-baseline
+maintainer: CMS InSpec Dev team
+copyright: 
+copyright_email: 
+license: Apache-2.0
+summary: "CMS ARS3.1 Overlay against CIS AWS Foundations Benchmark Baseline InSpec Compliance Profile"
+version: 0.1.0
+
+depends:
+- name: cis-aws-foundations-baseline
+  git: https://github.cms.gov/ispg-review/cis-aws-foundations-baseline.git
+  branch: master
+  
