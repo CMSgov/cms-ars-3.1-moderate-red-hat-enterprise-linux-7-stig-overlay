@@ -95,7 +95,7 @@ difok: 6
 
 #V-71933.rb
 #MIN_REUSE_GENERATIONS (number of reuse generations)
-min_reuse_generations: 24
+min_reuse_generations: 6
 
 #V-71935.rb
 #MIN_LEN (number of characters)
