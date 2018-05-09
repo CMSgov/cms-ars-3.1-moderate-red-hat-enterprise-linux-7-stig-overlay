@@ -202,18 +202,18 @@ password sufficient pam_unix.so use_authtok sha512 shadow remember=6'
 control 'V-71941' do
 	desc 'Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.
 
-Operating systems need to track periods of inactivity and disable application identifiers after 90 days of inactivity.'
+Operating systems need to track periods of inactivity and disable application identifiers after 60 days of inactivity.'
 	tag 'check': 'Verify the operating system disables account identifiers (individuals, groups, roles, and devices) after the password expires with the following command:
 
 # grep -i inactive /etc/default/useradd
-INACTIVE=90
+INACTIVE=60
 
-If the value is not set to "90", is commented out, or is not defined, this is a finding.'
+If the value is not set to "60", is commented out, or is not defined, this is a finding.'
 	tag 'fix': 'Configure the operating system to disable account identifiers (individuals, groups, roles, and devices) after the password expires.
 
 Add the following line to "/etc/default/useradd" (or modify the line to have the required value):
 
-INACTIVE=90'
+INACTIVE=60'
 	end
 
 control 'V-71943' do
