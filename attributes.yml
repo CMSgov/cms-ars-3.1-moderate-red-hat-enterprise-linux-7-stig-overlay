@@ -117,7 +117,7 @@ min_reuse_generations: 6
 
 #V-71935.rb
 #MIN_LEN (number of characters)
-min_len: 8
+#min_len: 15
 
 #V-71941.rb
 #DAYS_OF_INACTIVITY (number of days)
