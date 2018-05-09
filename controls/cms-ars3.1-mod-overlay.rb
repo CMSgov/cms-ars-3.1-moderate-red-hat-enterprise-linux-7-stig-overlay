@@ -217,48 +217,48 @@ INACTIVE=60'
 	end
 
 control 'V-71943' do
-	title "Accounts subject to three unsuccessful logon attempts within 30 minutes must be locked for the maximum configurable period."
-	tag 'check': 'Verify the operating system automatically locks an account for the maximum period for which the system can be configured.
+	title "Accounts subject to five unsuccessful logon attempts within 120 minutes must be locked for one hour."
+	tag 'check': 'Verify the operating system automatically locks an account for one hour.
 
-Check that the system locks an account for the maximum period after three unsuccessful logon attempts within a period of 30 minutes with the following command:
+Check that the system locks an account for one hour after five unsuccessful logon attempts within a period of 120 minutes with the following command:
 
 # grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth        required       pam_faillock.so preauth silent audit deny=3 even_deny_root unlock_time=1800
-auth        [default=die]  pam_faillock.so authfail audit deny=3 even_deny_root unlock_time=1800
+auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
+auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
 account required pam_faillock.so 
 
-If the "unlock_time" setting is greater than "1800" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.
+If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.
 
 # grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=3 even_deny_root unlock_time=1800
-auth [default=die] pam_faillock.so authfail audit deny=3 even_deny_root unlock_time=1800
+auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
+auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
 account required pam_faillock.so 
 
-If the "unlock_time" setting is greater than "604800" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.'
-	tag 'fix': 'Configure the operating system to lock an account for the maximum period when three unsuccessful logon attempts in 30 minutes are made.
+If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.'
+	tag 'fix': 'Configure the operating system to lock an account for one hour when five unsuccessful logon attempts in 120 minutes are made.
 
 Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
 
-auth        required       pam_faillock.so preauth silent audit deny=3 even_deny_root fail_interval=900 unlock_time=1800
+auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
 auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=3 even_deny_root fail_interval=900 unlock_time=1800
+auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
 account required pam_faillock.so'
 	end
 
 control 'V-71945' do
-	title 'If three unsuccessful root logon attempts within 30 minutes occur the associated account must be locked.'
-	tag 'check': 'Verify the operating system automatically locks the root account until it is released by an administrator when three unsuccessful logon attempts in 30 minutes are made.
+	title 'If five unsuccessful root logon attempts within 120 minutes occur the associated account must be locked.'
+	tag 'check': 'Verify the operating system automatically locks the root account until it is released by an administrator when five unsuccessful logon attempts in 120 minutes are made.
 
 # grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth required pam_faillock.so preauth silent audit deny=3 even_deny_root unlock_time=1800 fail_interval=900 
-auth [default=die] pam_faillock.so authfail audit deny=3 even_deny_root unlock_time=1800 fail_interval=900
+auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
+auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
 account required pam_faillock.so
 
 If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.
 
 # grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=3 even_deny_root unlock_time=1800 fail_interval=900 
-auth [default=die] pam_faillock.so authfail audit deny=3 even_deny_root unlock_time=1800 fail_interval=900
+auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
+auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
 account required pam_faillock.so
 
 If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.'
@@ -266,9 +266,9 @@ If the "even_deny_root" setting is not defined on both lines with the "pam_faill
 
 Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
 
-auth        required       pam_faillock.so preauth silent audit deny=3 even_deny_root fail_interval=900 unlock_time=1800
+auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
 auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=3 even_deny_root fail_interval=900 unlock_time=1800
+auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
 account required pam_faillock.so
 
 Note: Any updates made to "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" may be overwritten by the "authconfig" program. The "authconfig" program should not be used.'
