@@ -183,37 +183,37 @@ control 'V-71917' do
 	end
 
 control 'V-71933' do
-	title 'Passwords must be prohibited from reuse for a minimum of 24 generations.'
-	tag 'check': 'Verify the operating system prohibits password reuse for a minimum of 24 generations.
+	title 'Passwords must be prohibited from reuse for a minimum of 6 generations.'
+	tag 'check': 'Verify the operating system prohibits password reuse for a minimum of 6 generations.
 
 Check for the value of the "remember" argument in "/etc/pam.d/system-auth-ac" with the following command:
 
 # grep -i remember /etc/pam.d/system-auth-ac
-password sufficient pam_unix.so use_authtok sha512 shadow remember=24
+password sufficient pam_unix.so use_authtok sha512 shadow remember=6
 
-If the line containing the "pam_unix.so" line does not have the "remember" module argument set, or the value of the "remember" module argument is set to less than "24", this is a finding.'
-	tag 'fix': 'Configure the operating system to prohibit password reuse for a minimum of 24 generations.
+If the line containing the "pam_unix.so" line does not have the "remember" module argument set, or the value of the "remember" module argument is set to less than "6", this is a finding.'
+	tag 'fix': 'Configure the operating system to prohibit password reuse for a minimum of 6 generations.
 
 Add the following line in "/etc/pam.d/system-auth-ac" (or modify the line to have the required value):
 
-password sufficient pam_unix.so use_authtok sha512 shadow remember=24'
+password sufficient pam_unix.so use_authtok sha512 shadow remember=6'
 	end
 
 control 'V-71935' do
-	title 'Passwords must be a minimum of 12 characters in length.'
+	title 'Passwords must be a minimum of 15 characters in length.'
 	tag 'check': 'Verify the operating system enforces a minimum 12-character password length. The "minlen" option sets the minimum number of characters in a new password.
 
 Check for the value of the "minlen" option in "/etc/security/pwquality.conf" with the following command:
 
 # grep minlen /etc/security/pwquality.conf
-minlen = 12
+minlen = 15
 
-If the command does not return a "minlen" value of 12 or greater, this is a finding.'
-	tag 'fix': 'Configure operating system to enforce a minimum 12-character password length.
+If the command does not return a "minlen" value of 15 or greater, this is a finding.'
+	tag 'fix': 'Configure operating system to enforce a minimum 15-character password length.
 
 Add the following line to "/etc/security/pwquality.conf" (or modify the line to have the required value):
 
-minlen = 12'
+minlen = 15'
 	end
 
 control 'V-71941' do
