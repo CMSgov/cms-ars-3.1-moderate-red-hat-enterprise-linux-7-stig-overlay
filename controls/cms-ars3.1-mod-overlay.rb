@@ -199,23 +199,6 @@ Add the following line in "/etc/pam.d/system-auth-ac" (or modify the line to hav
 password sufficient pam_unix.so use_authtok sha512 shadow remember=6'
 	end
 
-control 'V-71935' do
-	title 'Passwords must be a minimum of 15 characters in length.'
-	tag 'check': 'Verify the operating system enforces a minimum 12-character password length. The "minlen" option sets the minimum number of characters in a new password.
-
-Check for the value of the "minlen" option in "/etc/security/pwquality.conf" with the following command:
-
-# grep minlen /etc/security/pwquality.conf
-minlen = 15
-
-If the command does not return a "minlen" value of 15 or greater, this is a finding.'
-	tag 'fix': 'Configure operating system to enforce a minimum 15-character password length.
-
-Add the following line to "/etc/security/pwquality.conf" (or modify the line to have the required value):
-
-minlen = 15'
-	end
-
 control 'V-71941' do
 	desc 'Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.
 
