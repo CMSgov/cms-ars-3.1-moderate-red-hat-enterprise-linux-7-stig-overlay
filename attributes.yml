@@ -127,17 +127,17 @@ days_of_inactivity: 60
 #UNSUCCESSFUL_ATTEMPTS (number of unsuccessful attempts)
 #FAIL_INTERVAL (time in seconds)
 #LOCKOUT_TIME (time in seconds)
-unsuccessful_attempts: 3
-fail_interval: 900
-lockout_time: 1800
+unsuccessful_attempts: 5
+fail_interval: 7200
+lockout_time: 3600
 
 #V-71945.rb
 #UNSUCCESSFUL_ATTEMPTS_ROOT (number of unsuccessful attempts)
 #FAIL_INTERVAL_ROOT (time in seconds)
 #LOCKOUT_TIME_ROOT (time in seconds)
-unsuccessfully_attempts_root: 3
-fail_interval_root: 900
-lockout_time_root: 1800
+unsuccessfully_attempts_root: 5
+fail_interval_root: 7200
+lockout_time_root: 3600
 
 #V-71973.rb
 #FILE_INTEGRITY_TOOL (name of tool)
