@@ -121,7 +121,7 @@ min_reuse_generations: 6
 
 #V-71941.rb
 #DAYS_OF_INACTIVITY (number of days)
-days_of_inactivity: 90
+days_of_inactivity: 60
 
 #V-71943.rb
 #UNSUCCESSFUL_ATTEMPTS (number of unsuccessful attempts)
