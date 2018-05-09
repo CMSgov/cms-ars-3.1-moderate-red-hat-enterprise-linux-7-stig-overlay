@@ -161,7 +161,7 @@ Check for the value of the \"difok\" option in \"/etc/security/pwquality.conf\"
 with the following command:
 # grep difok /etc/security/pwquality.conf
 difok = 6
-If the value of \"difok\" is set to less than \"8\", this is a finding."
+If the value of \"difok\" is set to less than \"6\", this is a finding."
   tag "fix": "Configure the operating system to require the change of at least
 eight of the total number of characters when passwords are changed by setting
 the \"difok\" option.
