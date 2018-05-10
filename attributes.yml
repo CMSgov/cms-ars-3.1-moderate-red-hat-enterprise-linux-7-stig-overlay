@@ -147,7 +147,7 @@ file_integrity_interval: daily
 
 #V-72223.rb
 #SYSTEM_INACTIVITY_TIMEOUT (time in seconds)
-system_inactivity_timeout: 600
+system_inactivity_timeout: 1800
 
 #V-72237.rb
 #CLIENT_ALIVE_INTERVAL (time in seconds)
