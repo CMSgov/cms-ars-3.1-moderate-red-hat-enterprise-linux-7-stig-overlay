@@ -143,7 +143,7 @@ lockout_time_root: 3600
 #FILE_INTEGRITY_TOOL (name of tool)
 #FILE_INTEGRITY_INTERVAL (monthly, weekly, or daily)
 file_integrity_tool: aide
-file_integrity_interval: monthly
+file_integrity_interval: daily
 
 #V-72223.rb
 #SYSTEM_INACTIVITY_TIMEOUT (time in seconds)
