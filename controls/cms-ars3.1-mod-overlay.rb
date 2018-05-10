@@ -565,20 +565,22 @@ The SSH service must be restarted for changes to take effect.'
 
 control 'V-72237' do
 	title 'All network connections associated with SSH traffic must terminate at the end of the session or after 30 minutes of inactivity, except to fulfill documented and validated mission requirements.'
-	tag 'check': 'Verify the operating system automatically terminates a user session after inactivity time-outs have expired.
+	tag 'check': 'Verify the operating system automatically terminates a user session after inactivity time-outs have expired. 
 
-Check for the value of the "ClientAlive" keyword with the following command:
+Check for the value of the "ClientAliveInterval" keyword with the following command: 
 
-# grep -i clientalive /etc/ssh/sshd_config
+# grep -iw clientaliveinterval /etc/ssh/sshd_config 
 
-ClientAliveInterval 1800
+ClientAliveInterval 1800 
 
-If "ClientAliveInterval" is not set to "1800" in "/etc/ ssh/sshd_config", and a lower value is not documented with the Information System Security Officer (ISSO) as an operational requirement, this is a finding.'
-	tag 'fix': 'Configure the operating system to automatically terminate a user session after inactivity time-outs have expired or at shutdown.
+If "ClientAliveInterval" is not configured, commented out, or has a value of "0", this is a finding. 
 
-Add the following line (or modify the line to have the required value) to the "/etc/ssh/sshd_config" file (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor):
+If "ClientAliveInterval" has a value that is greater than "1800" and is not documented with the Information System Security Officer (ISSO) as an operational requirement, this is a finding.'
+	tag 'fix': 'Configure the operating system to automatically terminate a user session after inactivity time-outs have expired or at shutdown. 
 
-ClientAliveInterval 1800
+Add the following line (or modify the line to have the required value) to the "/etc/ssh/sshd_config" file (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): 
+
+ClientAliveInterval 1800 
 
 The SSH service must be restarted for changes to take effect.'
 	end
