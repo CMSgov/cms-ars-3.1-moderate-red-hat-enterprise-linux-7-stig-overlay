@@ -346,6 +346,14 @@ control 'V-71987' do
 	impact 0.0
 	end
 
+control 'V-71989' do
+	impact 0.0
+	end
+
+control 'V-71991' do
+	impact 0.0
+	end
+
 control 'V-72007' do
 	tag "cci": "CCI-000213"
         tag "nist": ["AC-3", "Rev_4"]
