@@ -291,12 +291,12 @@ Configuration settings are the set of parameters that can be changed in hardware
 	end
 
 control 'V-71973' do
-	title 'A file integrity tool must verify the baseline operating system configuration at least monthly.'
+	title 'A file integrity tool must verify the baseline operating system configuration at least daily.'
 	tag "cci": "CCI-002709"
         tag "nist": ["SI-7", "Rev_4"]
 	tag 'check': 'Verify the operating system routinely checks the baseline configuration for unauthorized changes.
 
-Note: A file integrity tool other than Advanced Intrusion Detection Environment (AIDE) may be used, but the tool must be executed at least once per month.
+Note: A file integrity tool other than Advanced Intrusion Detection Environment (AIDE) may be used, but the tool must be executed at least once per day.
 
 Check to see if AIDE is installed on the system with the following command:
 
@@ -304,15 +304,15 @@ Check to see if AIDE is installed on the system with the following command:
 
 If AIDE is not installed, ask the SA how file integrity checks are performed on the system.
 
-Check for the presence of a cron job running daily, weekly, or monthly on the system that executes AIDE daily to scan for changes to the system baseline. The command used in the example will use a daily occurrence.
+Check for the presence of a cron job running daily on the system that executes AIDE daily to scan for changes to the system baseline. The command used in the example will use a daily occurrence.
 
-Check the "/etc/cron.monthly" subdirectory for a "crontab" file controlling the execution of the file integrity application. For example, if AIDE is installed on the system, use the following command:
+Check the "/etc/cron.daily" subdirectory for a "crontab" file controlling the execution of the file integrity application. For example, if AIDE is installed on the system, use the following command:
 
 # ls -al /etc/cron.* | grep aide
 -rwxr-xr-x  1 root root        29 Nov  22  2015 aide
 
-If the file integrity application does not exist, or a "crontab" file does not exist in the "/etc/cron.daily", "/etc/cron.weekly", or "/etc/cron.monthly" subdirectories, this is a finding.'
-	tag 'fix': 'Configure the file integrity tool to automatically run on the system at least monthly. The following example output is generic. It will set cron to run AIDE daily, but other file integrity tools may be used:
+If the file integrity application does not exist, or a "crontab" file does not exist in the "/etc/cron.daily" subdirectory, this is a finding.'
+	tag 'fix': 'Configure the file integrity tool to automatically run on the system at least daily. The following example output is generic. It will set cron to run AIDE daily, but other file integrity tools may be used:
 
 # cat /etc/cron.daily/aide 
 0 0 * * * /usr/sbin/aide --check | /bin/mail -s "aide integrity check run for <system name>" root@sysname.mil'
