@@ -52,8 +52,8 @@ $ bundle install
 
 # To run profile locally with cli & json output 
 $ inspec exec /path/to/profile --attrs=attributes.yml --reporter cli json:rhel-results.json
-
 ```
+For more usage options, see https://github.com/chef/inspec/blob/master/README.md 
 
 ### Run individual controls
 
