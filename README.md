@@ -1,17 +1,98 @@
 # cms-ars3.1-moderate-inspec-profile-disa_stig-el7
 CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG
 
-Based on InSpec Profile baseline maintained by the SIMP Project:
+Based on the InSpec Profile baseline maintained by the [SIMP](https://github.com/simp/) Project
 
-# EL7 DISA STIG InSpec Profile Maintained by the SIMP Project
+# Description
 
-This [InSpec](https://github.com/chef/inspec) profile is being developed and
-maintained as part of the SIMP project.
+This [InSpec](https://github.com/chef/inspec) compliance profile implements the [Red Hat Enterprise Linux 7 STIG Version 1, Release 4] (https://iasecontent.disa.mil/stigs/zip/U_Red_Hat_Enterprise_Linux_7_V1R4_STIG.zip), tailored as an overlay, meaning it is aligned to the relevant security controls and settings (attributes) specific to a CMS ARS 3.1 Moderate instance of RHEL7. It is dependent on a fork of the SIMP version of the base STIG profile.
 
-That said, it is our goal to make them valid for general purpose usage and
-hopefully hand them off to a more structured body as time progresses.
+## Requirements
 
-# Testing
+- [InSpec](http://inspec.io/) at least version 2.1
+- [AWS CLI](https://aws.amazon.com/cli/) at least version 2.x
+
+## Get started
+
+### Installing InSpec 
+
+If needed - install inspec on your 'runner' system - i.e. your orchestration server, your workstation, your bastion host or your instance you wish to evlauate.
+
+  a. InSpec has prepackaged installers for all platforms here: https://www.inspec.io/downloads, or 
+  
+  b. If you already have a ruby environment (`2.4.x`) installed on your 'runner' system - you can just do a simple `gem install inspec`, or 
+  
+  c. You can use the AWS SSM suite to run InSpec on your AWS assets - see the InSpec + SSM documation here: https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef/
+  
+### Get the CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG
+
+You will need to download the InSpec Profile to your `runner` system. You can do this via `git` or the GitHub Web interface, etc.
+
+  a. `git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profile-disa_stig-el7`, or 
+  
+  b. Save a Zip or tar.gz copy of the master branch from the `Clone or Download` button of this project
+
+### Setting up dependencies in your Ruby and InSpec Environments
+
+The profile uses Bundler to manage needed dependencies - so you will need to installed the needed gems via bundler before you run the profile. Change directories to your your cloned inspec profile then do a `bundle install`. 
+
+  a. `cd cms-ars3.1-moderate-inspec-profile-disa_stig-el7` 
+  
+  b. `bundle install`
+
+## Usage
+
+InSpec makes it easy to run your tests wherever you need. More options listed here: [InSpec cli](http://inspec.io/docs/reference/cli/)
+
+```
+# Clone Inspec Profile
+$ git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profile-disa_stig-el7
+
+# Install Gems
+$ bundle install
+
+# To run profile locally and directly from Github
+$ inspec exec /path/to/profile -t aws:// --attrs=attributes.yml
+
+# To run profile locally and directly from Github with cli & json output 
+$ inspec exec /path/to/profile -t aws:// --attrs=attributes.yml --reporter cli json:rhel-results.json
+
+```
+
+### Run individual controls
+
+In order to verify individual controls, just provide the control ids to InSpec:
+
+```
+$ inspec exec /path/to/profile --attrs=attributes.yml --controls V-72299
+```
+
+### Long Running Controls
+
+There are a few long running controls that take anywhere from 3 minutes to 10 minutes 
+or more to run. In an ongoing or CI/CD pipelne this is not ideal. We have created an 
+attribute in the profile to allow you to 'skip' these controls to account for situations.
+
+The attrubute `DISABLE_SLOW_CONTROLS (bool: false)` can be set to `true` or `false` as needed in 
+the `attributes.yml` file or set in the `.kitchen.yml` file.
+
+* `V-71849` (~3 minutes)
+* `V-71855` (~3 minutes)
+* `V-72037` (10+ minutes)
+
+## Contributors + Kudos
+
+- Aaron Lippold [aaronlippold](https://github.com/aaronlippold)
+
+## License and Author
+
+### Authors
+
+- Author:: Aaron Lippold [lippold@gmail.com](mailto:lippold@gmail.com)
+
+### License 
+
+* This project is dual-licensed under the terms of the Apache license 2.0 (apache-2.0)
 
 This repository uses either [Beaker](https://github.com/puppetlabs/beaker) to
 run tests or the [KitchenCI](http://kitchen.ci) framework to run tests on the
@@ -129,36 +210,3 @@ the `attributes.yml` file or set in the `.kitchen.yml` file.
 * `V-71849` (~3 minutes)
 * `V-71855` (~3 minutes)
 * `V-72037` (10+ minutes)
-
-# Hardening Development
-
-If you are going to be working on the ansible scripts you can continue to run
-`kitchen converge` and it will rerun your ansible scripts without going through
-the entire machine creations process etc.
-
-  * Making Changes and Testing
-    - run `kitchen converge (machine name)` - runs any changes to your hardening scripts
-    - run `kitchen verify (machine name)` - runs the inspec tests
-
-  * Starting Clean:
-    - run `kitchen destroy (machine name)` kitchen will drop your box and you can start clean
-  * Going through the entire process ( create, build, configure, verify, destroy )
-    - run `kitchen test (machine name)` or to test all defined machines `kitchen test`
-  * Just running the validation scripts
-    - run `kitchen verify (machine name)`
-  * just run one or more controls in the validation
-    - edit the .kitchen.yml file in the `controls:` section add the `control id(s)` to the list
-
-## Saving your output
-
-### Regular Text File
-  * To save your output just use `> output.txt`
-
-### Save as HTML
-
-In the `tools` directory there are a few useful scripts for getting a little
-better output for general display and demo, to use them see the `README.md`
-file in the `tools` directory or as an example:
-
-  * `kitchen converge (machine name) | ./tools/ansi2html.sh --bg=dark > kitchen-run.html`
-  * `inspec exec . -i $SSH_KEY -t ssh://vagrant@127.0.0.1:2222 | ./tools/ansi2html.sh --bg=dark > inspec-validation-run.html`
