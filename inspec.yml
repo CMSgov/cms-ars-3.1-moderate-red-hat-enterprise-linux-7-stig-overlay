@@ -9,6 +9,6 @@ version: 0.1.0
 
 depends:
 - name: inspec-profile-disa_stig-el7
-  git: https://github.com/ejaronne/inspec-profile-disa_stig-el7.git
-  branch: dev_to_RHEL7r4
+  git: https://github.cms.gov/mitre-dev/inspec-profile-disa_stig-el7.git
+  branch: master
   
