@@ -5,7 +5,7 @@ Based on the InSpec Profile baseline maintained by the [SIMP](https://github.com
 
 # Description
 
-This [InSpec](https://github.com/chef/inspec) compliance profile implements the [Red Hat Enterprise Linux 7 STIG Version 1, Release 4] (https://iasecontent.disa.mil/stigs/zip/U_Red_Hat_Enterprise_Linux_7_V1R4_STIG.zip), tailored as an overlay, meaning it is aligned to the relevant security controls and settings (attributes) specific to a CMS ARS 3.1 Moderate instance of RHEL7. It is dependent on a fork of the SIMP version of the base STIG profile.
+This [InSpec](https://github.com/chef/inspec) compliance profile implements the [Red Hat Enterprise Linux 7 STIG Version 1, Release 4](https://iasecontent.disa.mil/stigs/zip/U_Red_Hat_Enterprise_Linux_7_V1R4_STIG.zip), tailored as an overlay, meaning it is aligned to the relevant security controls and settings (attributes) specific to a CMS ARS 3.1 Moderate instance of RHEL7. It is dependent on a fork of the SIMP version of the base STIG profile.
 
 ## Requirements
 
