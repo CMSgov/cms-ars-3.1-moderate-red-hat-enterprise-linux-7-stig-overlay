@@ -10,7 +10,6 @@ This [InSpec](https://github.com/chef/inspec) compliance profile implements the 
 ## Requirements
 
 - [InSpec](http://inspec.io/) at least version 2.1
-- [AWS CLI](https://aws.amazon.com/cli/) at least version 2.x
 
 ## Get started
 
@@ -22,7 +21,7 @@ If needed - install inspec on your 'runner' system - i.e. your orchestration ser
   
   b. If you already have a ruby environment (`2.4.x`) installed on your 'runner' system - you can just do a simple `gem install inspec`, or 
   
-  c. You can use the AWS SSM suite to run InSpec on your AWS assets - see the InSpec + SSM documation here: https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef/
+  c. If running in AWS, you can use the AWS SSM suite to run InSpec on your RHEL assets - see the InSpec + SSM documation here: https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef/
   
 ### Get the CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG
 
