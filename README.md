@@ -81,6 +81,7 @@ the `attributes.yml` file.
 - SIMP team for maintaining the baseline profile [SIMP](https://github.com/simp/) 
 - Aaron Lippold [aaronlippold](https://github.com/aaronlippold)
 - Danny Haynes [djhaynes](https://github.com/djhaynes)
+- Sam Cornwell [samcornwell](https://github.com/samcornwell)
 - Eugene Aronne [ejaronne](https://github.com/ejaronne)
 
 ### License 
