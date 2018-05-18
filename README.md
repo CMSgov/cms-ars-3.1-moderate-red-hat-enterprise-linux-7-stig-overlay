@@ -70,7 +70,7 @@ or more to run. In an ongoing or CI/CD pipelne this is not ideal. We have create
 attribute in the profile to allow you to 'skip' these controls to account for situations.
 
 The attrubute `DISABLE_SLOW_CONTROLS (bool: false)` can be set to `true` or `false` as needed in 
-the `attributes.yml` file or set in the `.kitchen.yml` file.
+the `attributes.yml` file.
 
 * `V-71849` (~3 minutes)
 * `V-71855` (~3 minutes)
