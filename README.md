@@ -51,7 +51,7 @@ $ git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profil
 # Install Gems
 $ bundle install
 
-# To run profile locally and directly from Github with cli & json output 
+# To run profile locally with cli & json output 
 $ inspec exec /path/to/profile --attrs=attributes.yml --reporter cli json:rhel-results.json
 
 ```
