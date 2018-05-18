@@ -51,11 +51,8 @@ $ git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profil
 # Install Gems
 $ bundle install
 
-# To run profile locally and directly from Github
-$ inspec exec /path/to/profile -t aws:// --attrs=attributes.yml
-
 # To run profile locally and directly from Github with cli & json output 
-$ inspec exec /path/to/profile -t aws:// --attrs=attributes.yml --reporter cli json:rhel-results.json
+$ inspec exec /path/to/profile --attrs=attributes.yml --reporter cli json:rhel-results.json
 
 ```
 
@@ -64,7 +61,7 @@ $ inspec exec /path/to/profile -t aws:// --attrs=attributes.yml --reporter cli j
 In order to verify individual controls, just provide the control ids to InSpec:
 
 ```
-$ inspec exec /path/to/profile --attrs=attributes.yml --controls V-72299
+$ inspec exec /path/to/profile --attrs=attributes.yml --reporter cli json:rhel-results.json  --controls V-72299
 ```
 
 ### Long Running Controls
@@ -82,13 +79,10 @@ the `attributes.yml` file or set in the `.kitchen.yml` file.
 
 ## Contributors + Kudos
 
+- SIMP team for maintaining the baseline profile [SIMP](https://github.com/simp/) 
 - Aaron Lippold [aaronlippold](https://github.com/aaronlippold)
-
-## License and Author
-
-### Authors
-
-- Author:: Aaron Lippold [lippold@gmail.com](mailto:lippold@gmail.com)
+- Danny Haynes [djhaynes](https://github.com/djhaynes)
+- Eugene Aronne [ejaronne](https://github.com/ejaronne)
 
 ### License 
 
