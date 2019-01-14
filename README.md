@@ -27,7 +27,7 @@ If needed - install inspec on your 'runner' system - i.e. your orchestration ser
 
 You will need to download the InSpec Profile to your `runner` system. You can do this via `git` or the GitHub Web interface, etc.
 
-  a. `git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profile-disa_stig-el7`, or 
+  a. `git clone https://github.cms.gov/ispg/cms-ars3.1-moderate-inspec-profile-disa_stig-el7`, or 
   
   b. Save a Zip or tar.gz copy of the master branch from the `Clone or Download` button of this project
 
@@ -45,7 +45,7 @@ InSpec makes it easy to run your tests wherever you need. More options listed he
 
 ```
 # Clone Inspec Profile
-$ git clone https://github.cms.gov/ispg-review/cms-ars3.1-moderate-inspec-profile-disa_stig-el7
+$ git clone https://github.cms.gov/ispg/cms-ars3.1-moderate-inspec-profile-disa_stig-el7
 
 # Install Gems
 $ bundle install
