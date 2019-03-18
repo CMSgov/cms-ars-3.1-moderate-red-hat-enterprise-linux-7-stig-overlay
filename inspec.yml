@@ -9,6 +9,7 @@ version: 0.1.0
 
 depends:
 - name: inspec-profile-disa_stig-el7
-  path: inspec-profile-disa_stig-el7
+  git: https://github.cms.gov/ispg/inspec-profile-disa_stig-el7.git
+  branch: master
  
   
