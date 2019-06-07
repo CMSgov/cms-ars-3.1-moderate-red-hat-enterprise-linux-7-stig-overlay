@@ -16,7 +16,7 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 ```
 mkdir profiles
 cd profiles
-git clone https://github.cms.gov/ispg/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
+git clone https://github.cms.gov/ISPG/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
 git clone https://github.cms.gov/ISPG/inspec-profile-disa_stig-el7.git
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 bundle install
