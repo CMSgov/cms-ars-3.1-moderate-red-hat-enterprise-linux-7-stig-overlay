@@ -149,60 +149,93 @@ attributes:
   type: number
   default: 60
 
-#V-71943.rb
-#UNSUCCESSFUL_ATTEMPTS (number of unsuccessful attempts)
-#FAIL_INTERVAL (time in seconds)
-#LOCKOUT_TIME (time in seconds)
-unsuccessful_attempts: 5
-fail_interval: 7200
-lockout_time: 3600
+- name: unsuccessful_attempts
+  description: V-71943 The number of unsuccessful login attempts within a certain interval before lockout.
+  type: number
+  default: 5
 
-#V-71945.rb
-#UNSUCCESSFUL_ATTEMPTS_ROOT (number of unsuccessful attempts)
-#FAIL_INTERVAL_ROOT (time in seconds)
-#LOCKOUT_TIME_ROOT (time in seconds)
-unsuccessfully_attempts_root: 5
-fail_interval_root: 7200
-lockout_time_root: 3600
+- name: fail_interval
+  description: V-71943 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
+  type: number
+  default: 7200
+  
+- name: lockout_time 
+  description: V-71943 The time in seconds for how long an account will be locked out.
+  type: number
+  default: 3600
+  
+  - name: unsuccessful_attempts_root
+  description: V-71945 The number of unsuccessful login attempts within a certain interval before lockout.
+  type: number
+  default: 5
 
-#V-71973.rb
-#FILE_INTEGRITY_TOOL (name of tool)
-#FILE_INTEGRITY_INTERVAL (monthly, weekly, or daily)
-file_integrity_tool: aide
-file_integrity_interval: daily
+- name: fail_interval_root
+  description: V-71945 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
+  type: number
+  default: 7200
+  
+- name: lockout_time_root
+  description: V-71945 The time in seconds for how long an account will be locked out.
+  type: number
+  default: 3600
 
-#V-72223.rb
-#SYSTEM_INACTIVITY_TIMEOUT (time in seconds)
-system_inactivity_timeout: 1800
+- name: file_integrity_tool
+  description: V-71973 Name of file integrity tool.
+  type: string
+  default: 'aide'
+  
+- name: file_integrity_interval
+  description: V-71973 Interval upon which the file integrity tool is run (monthly, weekly, daily).
+  type: string
+  default: 'daily'
 
-#V-72237.rb
-#CLIENT_ALIVE_INTERVAL (time in seconds)
-client_alive_interval: 1800
+- name: system_inactivity_timeout
+  description: V-72223 System inactivity timeout in seconds
+  type: number
+  default: 1800
 
-# V-71965.rb values: (enabled or disabled)
-smart_card_status: 'enabled'
+- name: client_alive_interval 
+  description: V-72237 Client alive interval in seconds
+  type: number
+  default: 1800
 
-# V-72011.rb
-#EXEMPT_HOME_USERS (list of users exempt from needing a home drive in array format)
-exempt_home_users: []
+- name: smart_card_status
+  description: V-71965 Specifies whether smart card functionality is enabled or disabled.
+  type: string
+  default: 'enabled'
 
-##control "V-71961
-#description: 'main grub boot config file'"
-grub_main_cfg: '/boot/grub2/grub.cfg'
+- name: exempt_home_users
+  description: V-72011 List of users exempt from needing a home drive in array format.
+  type: array
+  default: []
 
-#description: 'superusers for grub boot ( array )'
-grub_superusers: ['root']
+- name: grub_main_cfg
+  description: V-71961 Main grub boot config file.
+  type: string
+  default: '/boot/grub2/grub.cfg'
 
-#description: 'grub boot config files'
-grub_user_boot_files: ['/boot/grub2/user.cfg']
+- name: grub_superusers
+  description: V-71961 Superusers for grub boot.
+  type: array
+  default: ['root']
 
-##control "V-71963"
-#description: 'superusers for efi boot ( array )'
-efi_superusers: ['root']
+- name: grub_user_boot_files
+  description: V-71961 Grub boot config files.
+  type: array
+  default: ['/boot/grub2/user.cfg']
 
-#description: 'efi boot config files'
-efi_user_boot_files: ['/boot/efi/EFI/redhat/user.cfg']
+- name: efi_superusers
+  description: V-71963 Superusers for efi boot.
+  type: array
+  default: ['root']
 
-#description: 'main efi boot config file'
-efi_main_cfg: '/boot/efi/EFI/redhat/grub.cfg'
+- name: efi_user_boot_files
+  description: V-71963 efi boot config files.
+  type: array
+  default: ['/boot/efi/EFI/redhat/user.cfg']
+
+- name: efi_main_cfg
+  description: V-71963 Main efi boot config file.
+  type: string
+  default: '/boot/efi/EFI/redhat/grub.cfg'
 
