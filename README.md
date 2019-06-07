@@ -10,6 +10,8 @@ __For the best security of the runner, always install on the runner the _latest 
 
 Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
 
+Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
+
 ## Running This Overlay
 When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
 
