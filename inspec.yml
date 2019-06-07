@@ -38,26 +38,30 @@ attributes:
   type: boolean
   default: true
 
-# V-72047 ( default: [] )
-# 'Known application groups that are allowed to have world-writeable files or directories'
-application_groups: []
+- name: application_groups
+  description: V-72047 Known application groups that are allowed to have world-writeable files or directories.
+  type: array
+  default: []
 
-# V-72307
-x11_enabled: false
+- name: x11_enabled
+  description: V-72307 Set to true if X11 is enabled.
+  type: boolean
+  default: false
 
-# 'Accounts that are not allowed on the system (Array)'
-disallowed_accounts: [
-  'games',
-  'gopher',
-  'ftp',
-]
+- name: disallowed_accounts
+  description: Accounts that are not allowed on the system (e.g., ['games', 'gopher', 'ftp']).
+  type: array
+  default: [] 
 
-# description: 'accounts of known managed users (Array)
-user_accounts: []
+- name: user_accounts
+  description: Accounts of known managed users.
+  type: array
+  default: []
 
-# System accounts that support approved system activities. (Array)
-known_system_accounts:
-  [
+- name: known_system_accounts
+  description: System accounts that support approved system activities.
+  type: array
+  default: [
     'root',
     'bin',
     'daemon',
@@ -92,8 +96,10 @@ known_system_accounts:
     'mysql', # known mysql system account
   ]
 
-#V-71861.rb
-banner_message_text_gui: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+- name: banner_message_text_gui
+  description: V-71861 The banner message text for GUI logins.
+  type: string
+  default: : "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
@@ -101,8 +107,10 @@ banner_message_text_gui: "* This warning banner provides privacy and security no
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
 
-#V-71863.rb
-banner_message_text_cli: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+- name: banner_message_text_cli
+  description: V-71863 The bannermessage text for command line interface logins.
+  type: string
+  default: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
@@ -110,8 +118,10 @@ banner_message_text_cli: "* This warning banner provides privacy and security no
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
 
-#V-72225.rb
-banner_message_text_ral: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+- name: banner_message_text_ral
+  description: V-72225 The banner message text for remote access logins.
+  type: string
+  default: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
@@ -119,22 +129,25 @@ banner_message_text_ral: "* This warning banner provides privacy and security no
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
 
-#V-71911.rb
-#DIFOK (minimum number of characters that must be different from
-#previous password)
-difok: 6
+- name: difok
+  description: V-71911 DIFOK (minimum number of characters that must be different from previous password).
+  type: number
+  default: 6
 
-#V-71933.rb
-#MIN_REUSE_GENERATIONS (number of reuse generations)
-min_reuse_generations: 6
+- name: min_reuse_generations
+  description: V-71933 Number of reuse generations.
+  type: number
+  default: 6
 
-#V-71935.rb
-#MIN_LEN (number of characters)
-#min_len: 15
+- name: min_len
+  description: V-71935 Number of characters.
+  type: number
+  default: 15
 
-#V-71941.rb
-#DAYS_OF_INACTIVITY (number of days)
-days_of_inactivity: 60
+- name: days_of_inactivity
+  description: V-71941 Number of days of inactivity.
+  type: number
+  default: 60
 
 #V-71943.rb
 #UNSUCCESSFUL_ATTEMPTS (number of unsuccessful attempts)
