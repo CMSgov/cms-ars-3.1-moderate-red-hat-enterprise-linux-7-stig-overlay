@@ -131,52 +131,52 @@ attributes:
 
 - name: difok
   description: V-71911 DIFOK (minimum number of characters that must be different from previous password).
-  type: number
+  type: numeric
   default: 6
 
 - name: min_reuse_generations
   description: V-71933 Number of reuse generations.
-  type: number
+  type: numeric
   default: 6
 
 - name: min_len
   description: V-71935 Number of characters.
-  type: number
+  type: numeric
   default: 15
 
 - name: days_of_inactivity
   description: V-71941 Number of days of inactivity.
-  type: number
+  type: numeric
   default: 60
 
 - name: unsuccessful_attempts
   description: V-71943 The number of unsuccessful login attempts within a certain interval before lockout.
-  type: number
+  type: numeric
   default: 5
 
 - name: fail_interval
   description: V-71943 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
-  type: number
+  type: numeric
   default: 7200
   
 - name: lockout_time 
   description: V-71943 The time in seconds for how long an account will be locked out.
-  type: number
+  type: numeric
   default: 3600
   
 - name: unsuccessful_attempts_root
   description: V-71945 The number of unsuccessful login attempts within a certain interval before lockout.
-  type: number
+  type: numeric
   default: 5
 
 - name: fail_interval_root
   description: V-71945 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
-  type: number
+  type: numeric
   default: 7200
   
 - name: lockout_time_root
   description: V-71945 The time in seconds for how long an account will be locked out.
-  type: number
+  type: numeric
   default: 3600
 
 - name: file_integrity_tool
@@ -191,12 +191,12 @@ attributes:
 
 - name: system_inactivity_timeout
   description: V-72223 System inactivity timeout in seconds
-  type: number
+  type: numeric
   default: 1800
 
 - name: client_alive_interval 
   description: V-72237 Client alive interval in seconds
-  type: number
+  type: numeric
   default: 1800
 
 - name: smart_card_status
