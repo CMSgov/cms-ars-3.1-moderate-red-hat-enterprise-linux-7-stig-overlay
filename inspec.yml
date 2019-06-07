@@ -238,4 +238,3 @@ attributes:
   description: V-71963 Main efi boot config file.
   type: string
   default: '/boot/efi/EFI/redhat/grub.cfg'
-
