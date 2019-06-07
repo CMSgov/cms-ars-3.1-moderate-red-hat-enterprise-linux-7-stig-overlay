@@ -164,7 +164,7 @@ attributes:
   type: number
   default: 3600
   
-  - name: unsuccessful_attempts_root
+- name: unsuccessful_attempts_root
   description: V-71945 The number of unsuccessful login attempts within a certain interval before lockout.
   type: number
   default: 5
