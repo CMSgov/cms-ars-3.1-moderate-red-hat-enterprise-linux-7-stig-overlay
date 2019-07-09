@@ -9,8 +9,7 @@ version: 0.1.0
 
 depends:
 - name: inspec-profile-disa_stig-el7
-  git: https://github.cms.gov/ispg/inspec-profile-disa_stig-el7.git
-  branch: master
+  path: ../inspec-profile-disa_stig-el7
 
 attributes:
 - name: disable_slow_controls
