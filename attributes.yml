@@ -135,7 +135,7 @@ lockout_time: 3600
 #UNSUCCESSFUL_ATTEMPTS_ROOT (number of unsuccessful attempts)
 #FAIL_INTERVAL_ROOT (time in seconds)
 #LOCKOUT_TIME_ROOT (time in seconds)
-unsuccessfully_attempts_root: 5
+unsuccessful_attempts_root: 5
 fail_interval_root: 7200
 lockout_time_root: 3600
 
