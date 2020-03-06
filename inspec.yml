@@ -105,6 +105,7 @@ attributes:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
+  profile: inspec-profile-disa_stig-el7
 
 - name: banner_message_text_cli
   description: V-71863 The bannermessage text for command line interface logins.
@@ -116,6 +117,7 @@ attributes:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
+  profile: inspec-profile-disa_stig-el7
 
 - name: banner_message_text_ral
   description: V-72225 The banner message text for remote access logins.
@@ -127,16 +129,19 @@ attributes:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
+  profile: inspec-profile-disa_stig-el7
 
 - name: difok
   description: V-71911 DIFOK (minimum number of characters that must be different from previous password).
   type: numeric
   default: 6
+  profile: inspec-profile-disa_stig-el7
 
 - name: min_reuse_generations
   description: V-71933 Number of reuse generations.
   type: numeric
   default: 6
+  profile: inspec-profile-disa_stig-el7
 
 - name: min_len
   description: V-71935 Number of characters.
@@ -147,36 +152,43 @@ attributes:
   description: V-71941 Number of days of inactivity.
   type: numeric
   default: 60
+  profile: inspec-profile-disa_stig-el7
 
 - name: unsuccessful_attempts
   description: V-71943 The number of unsuccessful login attempts within a certain interval before lockout.
   type: numeric
   default: 5
+  profile: inspec-profile-disa_stig-el7
 
 - name: fail_interval
   description: V-71943 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
   type: numeric
   default: 7200
+  profile: inspec-profile-disa_stig-el7
   
 - name: lockout_time 
   description: V-71943 The time in seconds for how long an account will be locked out.
   type: numeric
   default: 3600
+  profile: inspec-profile-disa_stig-el7
   
 - name: unsuccessful_attempts_root
   description: V-71945 The number of unsuccessful login attempts within a certain interval before lockout.
   type: numeric
   default: 5
+  profile: inspec-profile-disa_stig-el7
 
 - name: fail_interval_root
   description: V-71945 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
   type: numeric
   default: 7200
+  profile: inspec-profile-disa_stig-el7
   
 - name: lockout_time_root
   description: V-71945 The time in seconds for how long an account will be locked out.
   type: numeric
   default: 3600
+  profile: inspec-profile-disa_stig-el7
 
 - name: file_integrity_tool
   description: V-71973 Name of file integrity tool.
@@ -192,11 +204,13 @@ attributes:
   description: V-72223 System inactivity timeout in seconds
   type: numeric
   default: 1800
+  profile: inspec-profile-disa_stig-el7
 
 - name: client_alive_interval 
   description: V-72237 Client alive interval in seconds
   type: numeric
   default: 1800
+  profile: inspec-profile-disa_stig-el7
 
 - name: smart_card_status
   description: V-71965 Specifies whether smart card functionality is enabled or disabled.
