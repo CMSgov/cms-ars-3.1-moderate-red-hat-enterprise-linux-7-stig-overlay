@@ -18,8 +18,8 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 ```
 mkdir profiles
 cd profiles
-git clone https://github.cms.gov/ISPG/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
-git clone https://github.cms.gov/ISPG/inspec-profile-disa_stig-el7.git
+git clone https://github.cms.gov/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
+git clone https://github.cms.gov/CMSgov/inspec-profile-disa_stig-el7.git
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 bundle install
 cd ..
@@ -66,7 +66,7 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 * Sam Cornwell
 
 ## Contributing and Getting Help
-To report a bug or feature request, please open an [issue](https://github.cms.gov/ISPG/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/issues/new).
+To report a bug or feature request, please open an [issue](https://github.cms.gov/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/issues/new).
 
 ## License
 This is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license. 
