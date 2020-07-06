@@ -574,4 +574,5 @@ control 'V-72253' do
 control 'V-73163' do
 	impact 0.0
 	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	end
 end
