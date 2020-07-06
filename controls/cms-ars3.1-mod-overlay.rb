@@ -320,15 +320,18 @@ end
 
 control 'V-71987' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71989' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-71991' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72007' do
 	impact 0.0
@@ -425,21 +428,24 @@ control 'V-72087' do
 end
 
 control 'V-72089' do
-	tag "cci": "CCI-001849"
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72091' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72093' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72217' do
 	impact 0.0
-	end
+	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72221' do
 	desc "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and CMS data may be compromised.
