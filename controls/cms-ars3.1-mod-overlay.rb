@@ -4,7 +4,7 @@ include_controls "inspec-profile-disa_stig-el7" do
   
   control "V-71855" do
     impact 0.0
-    desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+    desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
   end 
   
   control "V-71859" do
@@ -172,17 +172,17 @@ difok = 6"
 	
 control 'V-71913' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
 end 
 
 control 'V-71915' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
 end 
 
 control 'V-71917' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
 end 
 
 control 'V-71933' do
@@ -279,12 +279,12 @@ Note: Any updates made to "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-a
 
 control 'V-71947' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-71949' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-71951' do
@@ -295,52 +295,52 @@ Configuration settings are the set of parameters that can be changed in hardware
 
 control 'V-71973' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-71975' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-71977' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-71979' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-71981' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-71987' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-71989' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-71991' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-72007' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-72009' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-72067' do
@@ -414,37 +414,37 @@ To ensure the boot= configuration option will work even if device naming changes
 
 control 'V-72083' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-72085' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-72087' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 end
 
 control 'V-72089' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-72091' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-72093' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-72217' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
 control 'V-72221' do
@@ -573,6 +573,6 @@ control 'V-72253' do
 
 control 'V-73163' do
 	impact 0.0
-	desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not included in CMS ARS 3.1'
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 	end
 end
