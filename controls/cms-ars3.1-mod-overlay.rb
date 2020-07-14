@@ -3,8 +3,8 @@
 include_controls "inspec-profile-disa_stig-el7" do
   
   control "V-71855" do
-    tag "cci": "CCI-002704"
-    tag "nist": ["SI-7", "Rev_4"]
+    impact 0.0
+    desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
   end 
   
   control "V-71859" do
@@ -172,15 +172,18 @@ difok = 6"
 	
 control 'V-71913' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+end 
 
 control 'V-71915' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+end 
 
 control 'V-71917' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related requirement is not included in IA-5(1) in CMS ARS 3.1'
+end 
 
 control 'V-71933' do
 	title 'Passwords must be prohibited from reuse for a minimum of 6 generations.'
@@ -275,14 +278,14 @@ Note: Any updates made to "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-a
 	end
 
 control 'V-71947' do
-	tag "cci": "CCI-002235"
-	tag "nist": ["AC-6 (10)", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71949' do
-        tag "cci": "CCI-002235"
-	tag "nist": ["AC-6 (10)", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71951' do
 	desc "Configuring the operating system to implement organization-wide security implementation guides and security checklists verifies compliance with federal standards and establishes a common security baseline that reflects the most restrictive security posture consistent with operational requirements.
@@ -291,78 +294,54 @@ Configuration settings are the set of parameters that can be changed in hardware
 	end
 
 control 'V-71973' do
-	title 'A file integrity tool must verify the baseline operating system configuration at least daily.'
-	tag "cci": "CCI-002709"
-        tag "nist": ["SI-7", "Rev_4"]
-	tag 'check': 'Verify the operating system routinely checks the baseline configuration for unauthorized changes.
-
-Note: A file integrity tool other than Advanced Intrusion Detection Environment (AIDE) may be used, but the tool must be executed at least once per day.
-
-Check to see if AIDE is installed on the system with the following command:
-
-# yum list installed aide
-
-If AIDE is not installed, ask the SA how file integrity checks are performed on the system.
-
-Check for the presence of a cron job running daily on the system that executes AIDE daily to scan for changes to the system baseline. The command used in the example will use a daily occurrence.
-
-Check the "/etc/cron.daily" subdirectory for a "crontab" file controlling the execution of the file integrity application. For example, if AIDE is installed on the system, use the following command:
-
-# ls -al /etc/cron.* | grep aide
--rwxr-xr-x  1 root root        29 Nov  22  2015 aide
-
-If the file integrity application does not exist, or a "crontab" file does not exist in the "/etc/cron.daily" subdirectory, this is a finding.'
-	tag 'fix': 'Configure the file integrity tool to automatically run on the system at least daily. The following example output is generic. It will set cron to run AIDE daily, but other file integrity tools may be used:
-
-# cat /etc/cron.daily/aide 
-0 0 * * * /usr/sbin/aide --check | /bin/mail -s "aide integrity check run for <system name>" root@sysname.mil'
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71975' do
 	impact 0.0
-	tag "cci": "CCI-001300"
-        tag "nist": ["SI-7 (2)", "Rev_4"]
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71977' do
 	impact 0.0
-	tag "cci": "CCI-002715"
-        tag "nist": ["SI-7 (5)", "Rev_4"]
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-71979' do
 	impact 0.0
-	tag "cci": "CCI-002715"
-        tag "nist": ["SI-7 (5)", "Rev_4"]
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-71981' do
 	impact 0.0
-	tag "cci": "CCI-002715"
-        tag "nist": ["SI-7 (5)", "Rev_4"]
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-71987' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-71989' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-71991' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72007' do
-	tag "cci": "CCI-000213"
-        tag "nist": ["AC-3", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-72009' do
-	tag "cci": "CCI-000213"
-        tag "nist": ["AC-3", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-72067' do
 	tag 'check': 'Verify the operating system implements approved encryption to protect the confidentiality of remote access sessions.
@@ -434,36 +413,39 @@ To ensure the boot= configuration option will work even if device naming changes
 	end	
 
 control 'V-72083' do
-	tag "cci": "CCI-001849"
-        tag "nist": ["AU-4", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-72085' do
-	tag "cci": "CCI-001849"
-        tag "nist": ["AU-4", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-72087' do
-	tag "cci": "CCI-001849"
-        tag "nist": ["AU-4", "Rev_4"]
-	end
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+end
 
 control 'V-72089' do
-	tag "cci": "CCI-001849"
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72091' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72093' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72217' do
 	impact 0.0
-	end
+	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
+end
 
 control 'V-72221' do
 	desc "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and CMS data may be compromised.
@@ -590,8 +572,7 @@ control 'V-72253' do
 	end
 
 control 'V-73163' do
-	tag "cci": "CCI-001849"
-	tag 'nist': ["AU-4","Rev_4"]
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 	end
 end
-
