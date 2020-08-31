@@ -1,5 +1,5 @@
 # cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
-InSpec profile overlay to validate the secure configuration of Red Hat Enterprise Linux 7 against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Red Hat Enterprise Linux 7 STIG Version 1 Release 4 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categories as Moderate.
+InSpec profile overlay to validate the secure configuration of Red Hat Enterprise Linux 7 against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Red Hat Enterprise Linux 7 STIG Version 2 Release 6 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categories as Moderate.
 
 Based on the InSpec Profile baseline maintained by the [SIMP](https://github.com/simp/) Project
 
@@ -12,6 +12,48 @@ Latest versions and installation options are available at the [InSpec](http://in
 
 Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
 
+The following inputs must be configured in an inputs file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+
+```
+grub_conf_path: ''
+disable_slow_controls: false
+monitor_kernel_log: true
+banner_message_enabled: true
+log_aggregation_server: false
+enable_av: true
+application_groups: []
+x11_enabled: false
+disallowed_accounts: []
+user_accounts: []
+known_system_accounts: []
+banner_message_text_gui: ""
+banner_message_text_cli: ""
+banner_message_text_ral: ""
+difok: 6
+min_reuse_generations: 6
+min_len: 15
+days_of_inactivity: 60
+unsuccessful_attempts: 5
+fail_interval: 7200
+lockout_time: 3600
+unsuccessful_attempts_root: 5
+fail_interval_root: 7200
+lockout_time_root: 3600
+file_integrity_tool: aide
+file_integrity_interval: daily
+system_inactivity_timeout: 1800
+client_alive_interval: 1800
+smart_card_status: ''
+exempt_home_users: []
+grub_main_cfg: ''
+grub_superusers: []
+grub_user_boot_files: []
+efi_superusers: []
+efi_user_boot_files: []
+efi_main_cfg: ''
+multifactor_enabled: ''
+```
+
 ## Running This Overlay
 When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
 
@@ -21,7 +63,6 @@ cd profiles
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
 git clone https://github.com/CMSgov/inspec-profile-disa_stig-el7.git
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
-bundle install
 cd ..
 inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/static-attributes.yml --target=ssh://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
@@ -33,7 +74,6 @@ cd profiles/inspec-profile-disa_stig-el7
 git pull
 cd ../cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 git pull
-bundle install
 cd ..
 inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/static-attributes.yml --target=ssh://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
@@ -59,6 +99,7 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 ## Authors
 * Eugene Aronne
 * Danny Haynes
+* Mohamed El-Sharkawi
 
 ## Special Thanks
 * The SIMP Project Team
