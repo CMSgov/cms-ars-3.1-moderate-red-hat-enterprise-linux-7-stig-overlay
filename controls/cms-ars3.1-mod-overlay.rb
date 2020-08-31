@@ -570,4 +570,29 @@ control 'V-73163' do
 	impact 0.0
 	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 	end
+
+control 'V-81013' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81015' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81017' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81019' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81021' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
 end
