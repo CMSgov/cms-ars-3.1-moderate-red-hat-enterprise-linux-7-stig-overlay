@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-include_controls "inspec-profile-disa_stig-el7" do
+include_controls "redhat-enterprise-linux-7-stig-baseline" do
   
   control "V-71855" do
     impact 0.0
@@ -8,7 +8,7 @@ include_controls "inspec-profile-disa_stig-el7" do
   end 
   
   control "V-71859" do
-    title "The operating system must display the Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
+    title "The Red Hat Enterprise Linux operating system must display the Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
     desc "Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -51,7 +51,7 @@ effect."
 	end 
   
   control "V-71861" do
-  	title "The operating system must display the approved Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
+  	title "The Red Hat Enterprise Linux operating system must display the approved Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
 	  desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -110,7 +110,7 @@ Run the following command to update the database:
 	end
 
   control 'V-71863' do
-	title 'The operating system must display the Standard Mandatory CMS Notice and Consent Banner before granting local or remote access to the system via a command line user logon.'
+	title 'The Red Hat Enterprise Linux operating system must display the Standard Mandatory CMS Notice and Consent Banner before granting local or remote access to the system via a command line user logon.'
 	desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -153,7 +153,7 @@ Replace the default text with the Standard Mandatory CMS Notice and Consent Bann
 	end
   
   control "V-71911" do
-  title "When passwords are changed a minimum of six of the total number of
+  title "The Red Hat Enterprise Linux operating system must be configured so that when passwords are changed a minimum of six of the total number of
 characters must be changed."
   tag "check": "The \"difok\" option sets the number of characters in a
 password that must not be present in the old password.
@@ -186,7 +186,7 @@ control 'V-71917' do
 end 
 
 control 'V-71933' do
-	title 'Passwords must be prohibited from reuse for a minimum of 6 generations.'
+	title 'The Red Hat Enterprise Linux operating system must be configured so that passwords must be prohibited from reuse for a minimum of 6 generations.'
 	tag 'check': 'Verify the operating system prohibits password reuse for a minimum of 6 generations.
 
 Check for the value of the "remember" argument in "/etc/pam.d/system-auth-ac" with the following command:
@@ -220,61 +220,114 @@ INACTIVE=60'
 	end
 
 control 'V-71943' do
-	title "Accounts subject to five unsuccessful logon attempts within 120 minutes must be locked for one hour."
-	tag 'check': 'Verify the operating system automatically locks an account for one hour.
-
-Check that the system locks an account for one hour after five unsuccessful logon attempts within a period of 120 minutes with the following command:
-
-# grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
-account required pam_faillock.so 
-
-If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.
-
-# grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
-account required pam_faillock.so 
-
-If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.'
-	tag 'fix': 'Configure the operating system to lock an account for one hour when five unsuccessful logon attempts in 120 minutes are made.
-
-Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
-
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-account required pam_faillock.so'
+	title "The Red Hat Enterprise Linux operating system must be configured to lock accounts for a minimum of 60 minutes after five unsuccessful logon attempts within a 120-minute timeframe."
+	  desc  "check", "
+	    Check that the system locks an account for a minimum of 60 minutes after
+	five unsuccessful logon attempts within a period of 120 minutes with the
+	following command:
+	    # grep pam_faillock.so /etc/pam.d/password-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"deny\" parameter is set to \"0\" or a value less than \"5\" on
+	both \"auth\" lines with the \"pam_faillock.so\" module, or is missing from
+	these lines, this is a finding.
+	    If the \"even_deny_root\" parameter is not set on both \"auth\" lines with
+	the \"pam_faillock.so\" module, or is missing from these lines, this is a
+	finding.
+	    If the \"fail_interval\" parameter is set to \"0\" or is set to a value
+	less than \"7200\" on both \"auth\" lines with the \"pam_faillock.so\" module,
+	or is missing from these lines, this is a finding.
+	    If the \"unlock_time\" parameter is not set to \"0\", \"never\", or is set
+	to a value less than \"3600\" on both \"auth\" lines with the
+	\"pam_faillock.so\" module, or is missing from these lines, this is a finding.
+	    Note: The maximum configurable value for \"unlock_time\" is \"604800\".
+	    If any line referencing the \"pam_faillock.so\" module is commented out,
+	this is a finding.
+	    # grep pam_faillock.so /etc/pam.d/system-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"deny\" parameter is set to \"0\" or a value less than \"3\" on
+	both \"auth\" lines with the \"pam_faillock.so\" module, or is missing from
+	these lines, this is a finding.
+	    If the \"even_deny_root\" parameter is not set on both \"auth\" lines with
+	the \"pam_faillock.so\" module, or is missing from these lines, this is a
+	finding.
+	    If the \"fail_interval\" parameter is set to \"0\" or is set to a value
+	less than \"7200\" on both \"auth\" lines with the \"pam_faillock.so\" module,
+	or is missing from these lines, this is a finding.
+	    If the \"unlock_time\" parameter is not set to \"0\", \"never\", or is set
+	to a value less than \"3600\" on both \"auth\" lines with the
+	\"pam_faillock.so\" module or is missing from these lines, this is a finding.
+	    Note: The maximum configurable value for \"unlock_time\" is \"604800\".
+	    If any line referencing the \"pam_faillock.so\" module is commented out,
+	this is a finding.
+	  "
+	  desc  "fix", "
+	    Configure the operating system to lock an account for 60 minutes
+	when five unsuccessful logon attempts in 120 minutes are made.
+	    Modify the first three lines of the auth section and the first line of the
+	account section of the \"/etc/pam.d/system-auth\" and
+	\"/etc/pam.d/password-auth\" files to match the following lines:
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth sufficient pam_unix.so try_first_pass
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    Note: Manual changes to the listed files may be overwritten by the
+	\"authconfig\" program. The \"authconfig\" program should not be used to update
+	the configurations listed in this requirement.
+	  "
 	end
 
 control 'V-71945' do
 	title 'If five unsuccessful root logon attempts within 120 minutes occur the associated account must be locked.'
-	tag 'check': 'Verify the operating system automatically locks the root account until it is released by an administrator when five unsuccessful logon attempts in 120 minutes are made.
-
-# grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
-account required pam_faillock.so
-
-If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.
-
-# grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
-account required pam_faillock.so
-
-If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.'
-	tag 'fix': 'Configure the operating system to automatically lock the root account until the locked account is released by an administrator when three unsuccessful logon attempts in 30 minutes are made.
-
-Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
-
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-account required pam_faillock.so
-
-Note: Any updates made to "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" may be overwritten by the "authconfig" program. The "authconfig" program should not be used.'
+	  desc  "check", "
+	    Verify the operating system automatically locks the root account until it
+	is released by an administrator when five unsuccessful logon attempts in 120
+	minutes are made.
+	    # grep pam_faillock.so /etc/pam.d/password-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"even_deny_root\" setting is not defined on both lines with the
+	\"pam_faillock.so\" module, is commented out, or is missing from a line, this
+	is a finding.
+	    # grep pam_faillock.so /etc/pam.d/system-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"even_deny_root\" setting is not defined on both lines with the
+	\"pam_faillock.so\" module, is commented out, or is missing from a line, this
+	is a finding.
+	  "
+	  desc  "fix", "
+	    Configure the operating system to lock automatically the root account until
+	the locked account is released by an administrator when five unsuccessful
+	logon attempts in 15 minutes are made.
+	    Modify the first three lines of the auth section and the first line of the
+	account section of the \"/etc/pam.d/system-auth\" and
+	\"/etc/pam.d/password-auth\" files to match the following lines:
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth sufficient pam_unix.so try_first_pass
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    Note: Manual changes to the listed files may be overwritten by the
+	\"authconfig\" program. The \"authconfig\" program should not be used to update
+	the configurations listed in this requirement.
+	  "
 	end
 
 control 'V-71947' do
