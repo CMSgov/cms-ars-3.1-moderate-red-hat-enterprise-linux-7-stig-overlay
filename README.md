@@ -1,8 +1,6 @@
 # cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 InSpec profile overlay to validate the secure configuration of Red Hat Enterprise Linux 7 against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Red Hat Enterprise Linux 7 STIG Version 2 Release 6 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categories as Moderate.
 
-Based on the InSpec Profile baseline maintained by the [SIMP](https://github.com/simp/) Project
-
 ## Getting Started  
 It is intended and recommended that InSpec and this profile overlay be run from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __ssh__.
 
@@ -15,43 +13,104 @@ Git is required to download the latest InSpec profiles using the instructions be
 The following inputs must be configured in an inputs file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
 
 ```
-grub_conf_path: ''
-disable_slow_controls: false
-monitor_kernel_log: true
-banner_message_enabled: true
-log_aggregation_server: false
-enable_av: true
+# Used by InSpec checks V-71849, V-71855, V-72037
+# InSpec Tests that are known to consistently have long run times (V-71849, V-71855, V-72037) can be disabled with this attribute
+# Acceptable values: false, true
+# (default: false)
+disable_slow_controls: 
+
+# Used by InSpec check V-71849
+# list of system files that should be allowed to change from an rpm verify point of view
+rpm_verify_perms_except: []
+
+# Used by InSpec check V-71855
+# list of system files that should be allowed to change from an rpm verify point of view
+rpm_verify_integrity_except: []
+
+# Used by InSpec check V-72211 (default: false)
+# Do NOT set to 'true' UNLESS the server is documented as being used as a log aggregation server. 
+log_aggregation_server: 
+
+# Used by InSpec check V-72047 (default: [])
+# Known application groups that are allowed to have world-writeable files or directories
 application_groups: []
-x11_enabled: false
-disallowed_accounts: []
+
+# Used by InSpec check V-72307 (default: false)
+# Do NOT set to 'true' UNLESS use of X Windows System is documented and approved. 
+x11_enabled: 
+
+# Accounts of known managed users (Array)
 user_accounts: []
-known_system_accounts: []
-banner_message_text_gui: ""
-banner_message_text_cli: ""
-banner_message_text_ral: ""
-difok: 6
-min_reuse_generations: 6
-min_len: 15
-days_of_inactivity: 60
-unsuccessful_attempts: 5
-fail_interval: 7200
-lockout_time: 3600
-unsuccessful_attempts_root: 5
-fail_interval_root: 7200
-lockout_time_root: 3600
-file_integrity_tool: aide
-file_integrity_interval: daily
-system_inactivity_timeout: 1800
-client_alive_interval: 1800
-smart_card_status: ''
+
+# System accounts that support approved system activities. (Array)
+known_system_accounts:
+  [
+    "root",
+    "bin",
+    "daemon",
+    "adm",
+    "lp",
+    "sync",
+    "shutdown",
+    "halt",
+    "mail",
+    "operator",
+    "nobody",
+    "systemd-bus-proxy",
+  ]
+
+# V-71965, V-72417, V-72433
+# (enabled or disabled)
+smart_card_status: "enabled"
+
+# V-72051/V-72209
+# The path to the logging package
+log_pkg_path: "/etc/rsyslog.conf"
+
+# V-72011, V-72015, V-72017, V-72019, V-72021, V-72023, V-72025
+# V-72027, V-72029, V-72031, V-72033, V-72035, V-72037, V-72059
+# Users exempt from home directory-based controls in array
+# format
 exempt_home_users: []
-grub_main_cfg: ''
-grub_superusers: []
-grub_user_boot_files: []
-efi_superusers: []
-efi_user_boot_files: []
-efi_main_cfg: ''
-multifactor_enabled: ''
+
+# V-71961
+# main grub boot config file
+grub_main_cfg: "/boot/grub2/grub.cfg"
+
+# superusers for grub boot ( array )
+grub_superusers: ["root"]
+
+# grub boot config files
+grub_user_boot_files: ["/boot/grub2/user.cfg"]
+
+# V-71963
+# superusers for efi boot ( array )
+efi_superusers: ["root"]
+
+# efi boot config files
+efi_user_boot_files: ["/boot/efi/EFI/redhat/user.cfg"]
+
+# main efi boot config file
+efi_main_cfg: "/boot/efi/EFI/redhat/grub.cfg"
+
+# V-71971
+# system accounts that support approved system activities
+admin_logins: []
+
+# V-77819
+# should dconf have smart card authentication
+multifactor_enabled: "true"
+
+# V-72317
+# approved configured tunnels prepended with word 'conn'
+# Example: ['conn myTunnel']
+approved_tunnels: []
+
+# V-72039
+# Is the target expected to be a virtual machine
+virtual_machine: false
+
+
 ```
 
 ## Running This Overlay
