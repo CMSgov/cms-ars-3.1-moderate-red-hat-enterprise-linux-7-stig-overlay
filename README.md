@@ -10,7 +10,7 @@ Latest versions and installation options are available at the [InSpec](http://in
 
 Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
 
-The following inputs must be configured in an inputs file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+The following inputs must be configured in an inputs ".yml" file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
 
 ```
 # Used by InSpec checks V-71849, V-71855, V-72037
@@ -115,35 +115,57 @@ virtual_machine: false
 
 ## Running This Overlay
 When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
-
+(The example exec command below is running the InSpec profile against the local host with escalated privileges. 
+ For remote and different authentication options, see section __"Different Run Options"__)
 ```
 mkdir profiles
 cd profiles
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
-git clone https://github.com/CMSgov/inspec-profile-disa_stig-el7.git
+git clone https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline.git
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/static-attributes.yml --target=ssh://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
+
+
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
 
 ```
-cd profiles/inspec-profile-disa_stig-el7
+cd profiles/redhat-enterprise-linux-7-stig-baseline
 git pull
 cd ../cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 git pull
 cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/static-attributes.yml --target=ssh://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
+### Different Run Options
+Against a remote target using ssh
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+```
+
+Against a remote target using ssh with escalated privileges (with Sudo password if required)
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+```
+
+Against a remote target using a pem key
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+```
+  [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
+
 ### Long Running Controls
 
-There are a few long running controls that take anywhere from 3 minutes to 10 minutes 
-or more to run. In an ongoing or CI/CD pipelne this is not ideal. We have created an 
-attribute in the profile to allow you to 'skip' these controls to account for situations.
+There are a few long running controls that take anywhere from 3 minutes to 10 minutes or more to run. In an ongoing or CI/CD pipelne this may not be ideal. We have supplied an 
+input (mentioned above in the user-defined inputs) in the profile to allow you to 'skip' these controls to account for these situations.
 
-The attrubute `DISABLE_SLOW_CONTROLS (bool: false)` can be set to `true` or `false` as needed in 
-the `attributes.yml` file.
+The attrubute `disable_slow_controls (bool: false)` can be set to `true` or `false` as needed in 
+an inputs yml file.
 
 * `V-71849` (~3 minutes)
 * `V-71855` (~3 minutes)
@@ -151,7 +173,7 @@ the `attributes.yml` file.
 
 ## Viewing the JSON Results
 
-The JSON results output file can be loaded into __[heimdall-lite](https://mitre.github.io/heimdall-lite/)__ for a user-interactive, graphical view of the InSpec results. 
+The JSON results output file can be loaded into __[heimdall-lite](https://heimdall-lite.mitre.org/)__ for a user-interactive, graphical view of the InSpec results. 
 
 The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
 
