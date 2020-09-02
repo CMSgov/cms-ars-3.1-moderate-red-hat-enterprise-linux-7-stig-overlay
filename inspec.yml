@@ -12,6 +12,7 @@ depends:
   path: ../redhat-enterprise-linux-7-stig-baseline
 # url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/v2.6.tar.gz
 
+inputs:
 - name: banner_message_text_gui
   description: V-71861 The banner message text for GUI logins.
   type: string
