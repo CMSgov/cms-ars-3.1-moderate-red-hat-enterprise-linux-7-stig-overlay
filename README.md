@@ -124,7 +124,7 @@ git clone https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linu
 git clone https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline.git
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 
@@ -137,25 +137,25 @@ git pull
 cd ../cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 git pull
 cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input-file <path_to_your_input-file/name_of_your_input-file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 ### Different Run Options
 Against a remote target using ssh
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 Against a remote target using ssh with escalated privileges (with Sudo password if required)
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 Against a remote target using a pem key
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input_file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
 ```
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
 
