@@ -1,11 +1,11 @@
-name: cms-ars3.1-moderate-redhat-enterprise-linux-7-stig-baseline
-title: cms-ars3.1-moderate-redhat-enterprise-linux-7-stig-baseline
+name: cms-ars3.1-moderate-redhat-enterprise-linux-7-stig-overlay
+title: cms-ars3.1-moderate-redhat-enterprise-linux-7-stig-overlay
 maintainer: CMS InSpec Dev team
 copyright: 
 copyright_email: 
 license: Apache-2.0
 summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG"
-version: 0.1.0
+version: 0.2.0
 
 depends:
 - name: redhat-enterprise-linux-7-stig-baseline
