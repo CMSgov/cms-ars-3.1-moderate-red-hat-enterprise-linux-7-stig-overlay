@@ -10,7 +10,7 @@ Latest versions and installation options are available at the [InSpec](http://in
 
 Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
 
-The following inputs must be configured in an inputs ".yml" file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+The following inputs can be configured in an inputs ".yml" file for the profile to run correctly for your specific environment. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
 
 ```
 # Used by InSpec checks V-71849, V-71855, V-72037
@@ -42,7 +42,7 @@ x11_enabled:
 # Accounts of known managed users (Array)
 user_accounts: []
 
-# System accounts that support approved system activities. (Array)
+# System accounts that support approved system activities. (Array) (defaults shown below)
 known_system_accounts:
   [
     "root",
