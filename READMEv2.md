@@ -113,51 +113,52 @@ virtual_machine: false
 
 ```
 
-## Running This Overlay
-When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
+## Running This Overlay Directly from Github
+
 (The example exec command below is running the InSpec profile against the local host with escalated privileges. 
  For remote and different authentication options, see section __"Different Run Options"__)
 ```
-mkdir profiles
-cd profiles
-git clone https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
-git clone https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline.git
-cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
-cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
-```
-
-
-
-For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
-
-```
-cd profiles/redhat-enterprise-linux-7-stig-baseline
-git pull
-cd ../cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
-git pull
-cd ..
-inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --input-file <path_to_your_input-file/name_of_your_input-file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 ### Different Run Options
 Against a remote target using ssh
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 Against a remote target using ssh with escalated privileges (with Sudo password if required)
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 Against a remote target using a pem key
 ```bash
 # How to run 
-$ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
 ```
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
+
+## Running This Overlay from a local Archive copy
+If your runner is not always expected to have direct access to GitHub, use the following steps to create an archive bundle of this overlay and all of its dependent tests:
+```
+mkdir profiles
+cd profiles
+git clone https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay.git
+inspec archive cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay-0.1.0.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+```
+
+For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
+
+```
+cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+git pull
+cd ..
+inspec archive cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay-0.1.0.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+```
 
 ## Viewing the JSON Results
 
@@ -165,7 +166,7 @@ The JSON results output file can be loaded into __[heimdall-lite](https://heimda
 
 The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
 
-### Long Running Controls
+## Long Running Controls
 
 There are a few long running controls that take anywhere from 3 minutes to 10 minutes or more to run. In an ongoing or CI/CD pipelne this may not be ideal. We have supplied an 
 input (mentioned above in the user-defined inputs) in the profile to allow you to 'skip' these controls to account for these situations.
