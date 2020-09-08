@@ -159,6 +159,12 @@ $ inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay -t ss
 ```
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
 
+## Viewing the JSON Results
+
+The JSON results output file can be loaded into __[heimdall-lite](https://heimdall-lite.mitre.org/)__ for a user-interactive, graphical view of the InSpec results. 
+
+The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
+
 ### Long Running Controls
 
 There are a few long running controls that take anywhere from 3 minutes to 10 minutes or more to run. In an ongoing or CI/CD pipelne this may not be ideal. We have supplied an 
@@ -170,12 +176,6 @@ an inputs yml file.
 * `V-71849` (~3 minutes)
 * `V-71855` (~3 minutes)
 * `V-72037` (10+ minutes)
-
-## Viewing the JSON Results
-
-The JSON results output file can be loaded into __[heimdall-lite](https://heimdall-lite.mitre.org/)__ for a user-interactive, graphical view of the InSpec results. 
-
-The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
 
 ## Authors
 * Eugene Aronne
