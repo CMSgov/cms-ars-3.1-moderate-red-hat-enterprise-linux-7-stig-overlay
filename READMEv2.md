@@ -156,7 +156,7 @@ For every successive run, follow these steps to always have the latest version o
 cd cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 git pull
 cd ..
-inspec archive cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+inspec archive cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay --overwrite
 inspec exec cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay-0.1.0.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
