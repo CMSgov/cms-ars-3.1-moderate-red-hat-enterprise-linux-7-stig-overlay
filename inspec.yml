@@ -9,8 +9,8 @@ version: 0.2.0
 
 depends:
 - name: redhat-enterprise-linux-7-stig-baseline
-  path: ../redhat-enterprise-linux-7-stig-baseline
-# url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/v2.6.tar.gz
+  url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/v2.6.tar.gz
+#  path: ../redhat-enterprise-linux-7-stig-baseline
 
 inputs:
 - name: banner_message_text_gui
