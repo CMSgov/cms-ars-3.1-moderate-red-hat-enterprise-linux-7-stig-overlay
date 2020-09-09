@@ -133,10 +133,10 @@ Against a remote target using ssh with escalated privileges (with Sudo password 
 $ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
-Against a remote target using a pem key
+Against a remote target using a pem key with escalated privileges
 ```bash
 # How to run 
-$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz --sudo -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
 ```
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
 
