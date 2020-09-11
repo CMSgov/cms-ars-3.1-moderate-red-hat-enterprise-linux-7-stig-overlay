@@ -1,11 +1,11 @@
 name: cms-ars-3.1-moderate-redhat-enterprise-linux-7-stig-overlay
 title: cms-ars-3.1-moderate-redhat-enterprise-linux-7-stig-overlay
-maintainer: CMS InSpec Dev team
+maintainer: CMS SAF team
 copyright: 
-copyright_email: 
+copyright_email: saf@cms.hhs.gov
 license: Apache-2.0
 summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG"
-version: 0.2.0
+version: 2.6.0
 inspec_version: ">= 4.0"
 
 depends:
