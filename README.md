@@ -115,20 +115,21 @@ virtual_machine: false
 
 ## Running This Overlay Directly from Github
 
-Against a remote target using ssh with escalated privileges (i.e., with InSpec installed on separate runner host)
+Against a remote target using ssh with escalated privileges (i.e., with InSpec installed on a separate runner host)
 ```bash
 # How to run 
 inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=<SUDO_PASSWORD_IF_REQUIRED> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
-Against a remote target using a pem key with escalated privileges (i.e., InSpec installed on separate runner host)
+Against a remote target using a pem key with escalated privileges (i.e., InSpec installed on a separate runner host)
 ```bash
 # How to run 
-inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz --sudo -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT --sudo -i <your_PEM_KEY> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
 ```
 
 Against a local Red Hat host with escalated privileges (i.e., InSpec installed on the target)
 ```bash
+# How to run
 sudo inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 ### Different Run Options
