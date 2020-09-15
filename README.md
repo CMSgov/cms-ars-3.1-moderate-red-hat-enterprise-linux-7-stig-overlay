@@ -115,24 +115,24 @@ virtual_machine: false
 
 ## Running This Overlay Directly from Github
 
-(The example exec command below is running the InSpec profile against the local host with escalated privileges. 
- For remote and different authentication options, see section __"Different Run Options"__)
+Against a remote target using ssh with escalated privileges (i.e., with InSpec installed on separate runner host)
+```bash
+# How to run 
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=<SUDO_PASSWORD_IF_REQUIRED> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
+
+Against a remote target using a pem key with escalated privileges (i.e., InSpec installed on separate runner host)
+```bash
+# How to run 
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz --sudo -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
+```
+
+Against a local Red Hat host with escalated privileges (i.e., InSpec installed on the target)
+```bash
 sudo inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 ### Different Run Options
 
-Against a remote target using ssh with escalated privileges (with Sudo password if required)
-```bash
-# How to run 
-$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=SUDO_PASSWORD --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
-```
-
-Against a remote target using a pem key with escalated privileges
-```bash
-# How to run 
-$ inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/v2.6-update.tar.gz --sudo -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>  
-```
   [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
 
 ## Running This Overlay from a local Archive copy
