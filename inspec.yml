@@ -1,16 +1,16 @@
-name: cms-ars-3.1-moderate-redhat-enterprise-linux-7-stig-overlay
-title: cms-ars-3.1-moderate-redhat-enterprise-linux-7-stig-overlay
+name: cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+title: cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
 maintainer: CMS SAF team
 copyright: 
 copyright_email: saf@cms.hhs.gov
 license: Apache-2.0
 summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG"
-version: 2.6.0
+version: 2.6.1
 inspec_version: ">= 4.0"
 
 depends:
 - name: redhat-enterprise-linux-7-stig-baseline
-  url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/v2.6.tar.gz
+  url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/master.tar.gz
 #  path: ../redhat-enterprise-linux-7-stig-baseline
 
 inputs:
