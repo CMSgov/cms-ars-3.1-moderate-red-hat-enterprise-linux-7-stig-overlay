@@ -1,253 +1,118 @@
-name: cms-ars3.1-moderate-inspec-profile-disa_stig-el7
-title: cms-ars3.1-moderate-inspec-profile-disa_stig-el7
-maintainer: CMS InSpec Dev team
+name: cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+title: cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay
+maintainer: CMS SAF team
 copyright: 
-copyright_email: 
+copyright_email: saf@cms.hhs.gov
 license: Apache-2.0
 summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for RHEL7 STIG"
-version: 0.1.0
+version: 2.6.1
+inspec_version: ">= 4.0"
 
 depends:
-- name: inspec-profile-disa_stig-el7
-  path: ../inspec-profile-disa_stig-el7
+- name: redhat-enterprise-linux-7-stig-baseline
+  url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/master.tar.gz
+#  path: ../redhat-enterprise-linux-7-stig-baseline
 
-attributes:
-- name: disable_slow_controls
-  description: Controls that are known to consistently have long run times can be disabled by setting this attribute to true.
-  type: boolean
-  default: false
-
-- name: monitor_kernel_log
-  description: V-72081 Set this to false if your system availability concern is not documented or there is no monitoring of the kernel log.
-  type: boolean
-  default: true
-  
-- name: banner_message_enabled
-  description: V-71859 Set to to true if the banner message is enabled. 
-  type: boolean
-  default: true
-
-- name: log_aggregation_server
-  description: V-72211 Set to true if the system is being used for a log aggreation server.
-  type: boolean
-  default: false
-
-- name: enable_av
-  description: V-72213 Set to true if the system has anti-virus enabled. This may only be disabled by exception and will be required to be enabled for full accredidation
-  type: boolean
-  default: true
-
-- name: application_groups
-  description: V-72047 Known application groups that are allowed to have world-writeable files or directories.
-  type: array
-  default: []
-
-- name: x11_enabled
-  description: V-72307 Set to true if X11 is enabled.
-  type: boolean
-  default: false
-
-- name: disallowed_accounts
-  description: Accounts that are not allowed on the system (e.g., ['games', 'gopher', 'ftp']).
-  type: array
-  default: [] 
-
-- name: user_accounts
-  description: Accounts of known managed users.
-  type: array
-  default: []
-
-- name: known_system_accounts
-  description: System accounts that support approved system activities.
-  type: array
-  default: [
-    'root',
-    'bin',
-    'daemon',
-    'adm',
-    'lp',
-    'sync',
-    'shutdown',
-    'halt',
-    'mail',
-    'operator',
-    'nobody',
-    'systemd-bus-proxy',
-    'systemd-network',
-    'dbus',
-    'docker', # account used by the docker daemon
-    'polkitd',
-    'tss', #  Account used by the trousers package to sandbox the tcsd daemon
-    'postfix', # Service Account for Postfix Mail Daemon
-    'chrony', # Service Account for the Chrony Time Service
-    'sshd', # Service Account for SSH
-    'ec2-user', # Service Account for EC2 Access in AWS
-    'sssd', # Service Account for the SSSH Authentication service
-    'rpc', # Service Account RPCBind Daemon
-    'unbound', # Service Account UnBound Daemon
-    'ntp', # Service Account for NTPD Daemon
-    'vboxadd', # known Virtualbox user
-    'nfsnobody', # service account for nsfd
-    'vagrant', # known service account for vagrant / Virtualbox
-    'nginx', # known service account for nginx web-server
-    'rpcuser', # known centos system account for nsf
-    'apache', # known apache system account
-    'mysql', # known mysql system account
-  ]
-
+inputs:
 - name: banner_message_text_gui
   description: V-71861 The banner message text for GUI logins.
   type: string
-  default: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+  value: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
-  profile: inspec-profile-disa_stig-el7
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: banner_message_text_cli
   description: V-71863 The bannermessage text for command line interface logins.
   type: string
-  default: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+  value: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
-  profile: inspec-profile-disa_stig-el7
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: banner_message_text_ral
   description: V-72225 The banner message text for remote access logins.
   type: string
-  default: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
+  value: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
 * This system is provided for Government authorized use only.
 * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
 * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
-  profile: inspec-profile-disa_stig-el7
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: difok
   description: V-71911 DIFOK (minimum number of characters that must be different from previous password).
   type: numeric
-  default: 6
-  profile: inspec-profile-disa_stig-el7
+  value: 6
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: min_reuse_generations
   description: V-71933 Number of reuse generations.
   type: numeric
-  default: 6
-  profile: inspec-profile-disa_stig-el7
-
-- name: min_len
-  description: V-71935 Number of characters.
-  type: numeric
-  default: 15
+  value: 6
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: days_of_inactivity
   description: V-71941 Number of days of inactivity.
   type: numeric
-  default: 60
-  profile: inspec-profile-disa_stig-el7
+  value: 60
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: unsuccessful_attempts
   description: V-71943 The number of unsuccessful login attempts within a certain interval before lockout.
   type: numeric
-  default: 5
-  profile: inspec-profile-disa_stig-el7
+  value: 5
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: fail_interval
   description: V-71943 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
   type: numeric
-  default: 7200
-  profile: inspec-profile-disa_stig-el7
+  value: 7200
+  profile: redhat-enterprise-linux-7-stig-baseline
   
 - name: lockout_time 
   description: V-71943 The time in seconds for how long an account will be locked out.
   type: numeric
-  default: 3600
-  profile: inspec-profile-disa_stig-el7
+  value: 3600
+  profile: redhat-enterprise-linux-7-stig-baseline
   
 - name: unsuccessful_attempts_root
   description: V-71945 The number of unsuccessful login attempts within a certain interval before lockout.
   type: numeric
-  default: 5
-  profile: inspec-profile-disa_stig-el7
+  value: 5
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: fail_interval_root
   description: V-71945 The fail interval in seconds upon which an account will be locked if a certain number of unsuccessful login attempts is reached.
   type: numeric
-  default: 7200
-  profile: inspec-profile-disa_stig-el7
+  value: 7200
+  profile: redhat-enterprise-linux-7-stig-baseline
   
 - name: lockout_time_root
   description: V-71945 The time in seconds for how long an account will be locked out.
   type: numeric
-  default: 3600
-  profile: inspec-profile-disa_stig-el7
-
-- name: file_integrity_tool
-  description: V-71973 Name of file integrity tool.
-  type: string
-  default: 'aide'
-  
-- name: file_integrity_interval
-  description: V-71973 Interval upon which the file integrity tool is run (monthly, weekly, daily).
-  type: string
-  default: 'daily'
+  value: 3600
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: system_inactivity_timeout
   description: V-72223 System inactivity timeout in seconds
   type: numeric
-  default: 1800
-  profile: inspec-profile-disa_stig-el7
+  value: 1800
+  profile: redhat-enterprise-linux-7-stig-baseline
 
 - name: client_alive_interval 
   description: V-72237 Client alive interval in seconds
   type: numeric
-  default: 1800
-  profile: inspec-profile-disa_stig-el7
+  value: 1800
+  profile: redhat-enterprise-linux-7-stig-baseline
 
-- name: smart_card_status
-  description: V-71965 Specifies whether smart card functionality is enabled or disabled.
-  type: string
-  default: 'enabled'
-
-- name: exempt_home_users
-  description: V-72011 List of users exempt from needing a home drive in array format.
-  type: array
-  default: []
-
-- name: grub_main_cfg
-  description: V-71961 Main grub boot config file.
-  type: string
-  default: '/boot/grub2/grub.cfg'
-
-- name: grub_superusers
-  description: V-71961 Superusers for grub boot.
-  type: array
-  default: ['root']
-
-- name: grub_user_boot_files
-  description: V-71961 Grub boot config files.
-  type: array
-  default: ['/boot/grub2/user.cfg']
-
-- name: efi_superusers
-  description: V-71963 Superusers for efi boot.
-  type: array
-  default: ['root']
-
-- name: efi_user_boot_files
-  description: V-71963 efi boot config files.
-  type: array
-  default: ['/boot/efi/EFI/redhat/user.cfg']
-
-- name: efi_main_cfg
-  description: V-71963 Main efi boot config file.
-  type: string
-  default: '/boot/efi/EFI/redhat/grub.cfg'

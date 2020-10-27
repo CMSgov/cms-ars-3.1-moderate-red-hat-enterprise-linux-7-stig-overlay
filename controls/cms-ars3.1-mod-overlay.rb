@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-include_controls "inspec-profile-disa_stig-el7" do
+include_controls "redhat-enterprise-linux-7-stig-baseline" do
   
   control "V-71855" do
     impact 0.0
@@ -8,7 +8,7 @@ include_controls "inspec-profile-disa_stig-el7" do
   end 
   
   control "V-71859" do
-    title "The operating system must display the Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
+    title "The Red Hat Enterprise Linux operating system must display the Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
     desc "Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -19,7 +19,7 @@ The approved banner states:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose'"
-      tag "check": "Verify the operating system displays the Standard Mandatory CMS Banner before granting access to the operating system via a graphical user logon.
+      desc 'check', "Verify the operating system displays the Standard Mandatory CMS Banner before granting access to the operating system via a graphical user logon.
 	
 Note: If the system does not have GNOME installed, this requirement is Not Applicable. 
 
@@ -29,7 +29,7 @@ Check to see if the operating system displays a banner at the logon screen with 
 banner-message-enable=true
 
 If 'banner-message-enable' is set to 'false' or is missing, this is a finding."
-	  tag "fix": "Configure the operating system to display the Standard Mandatory CMS Banner before granting access to the system.
+	  desc 'fix', "Configure the operating system to display the Standard Mandatory CMS Banner before granting access to the system.
 
 Note: If the system does not have GNOME installed, this requirement is Not Applicable.
 
@@ -51,7 +51,7 @@ effect."
 	end 
   
   control "V-71861" do
-  	title "The operating system must display the approved Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
+  	title "The Red Hat Enterprise Linux operating system must display the approved Standard Mandatory CMS Banner before granting local or remote access to the system via a graphical user logon."
 	  desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -62,7 +62,7 @@ The approved banner states:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose'
-	tag 'check': 'Verify the operating system displays the approved Standard Mandatory CMS Banner before granting access to the operating system via a graphical user logon.
+	desc 'check', 'Verify the operating system displays the approved Standard Mandatory CMS Banner before granting access to the operating system via a graphical user logon.
 
 Note: If the system does not have GNOME installed, this requirement is Not Applicable. 
 
@@ -81,7 +81,7 @@ banner-message-text=
 Note: The "\n " characters are for formatting only. They will not be displayed on the GUI.
 
 If the banner does not match the approved Standard Mandatory CMS Notice and Consent Banner, this is a finding.'
-      tag 'fix': 'Configure the operating system to display the approved Standard Mandatory CMS Banner before granting access to the system.
+      desc 'fix', 'Configure the operating system to display the approved Standard Mandatory CMS Banner before granting access to the system.
 
 Note: If the system does not have GNOME installed, this requirement is Not Applicable.
 
@@ -110,7 +110,7 @@ Run the following command to update the database:
 	end
 
   control 'V-71863' do
-	title 'The operating system must display the Standard Mandatory CMS Notice and Consent Banner before granting local or remote access to the system via a command line user logon.'
+	title 'The Red Hat Enterprise Linux operating system must display the Standard Mandatory CMS Notice and Consent Banner before granting local or remote access to the system via a command line user logon.'
 	desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 The approved banner states:
@@ -121,7 +121,7 @@ The approved banner states:
 * By using this system, you understand and consent to the following:
 - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.
 - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"'
-	tag 'check': 'Verify the operating system displays the Standard Mandatory CMS Notice and Consent Banner before granting access to the operating system via a command line user logon.
+	desc 'check', 'Verify the operating system displays the Standard Mandatory CMS Notice and Consent Banner before granting access to the operating system via a command line user logon.
 
 Check to see if the operating system displays a banner at the command line logon screen with the following command:
 
@@ -139,7 +139,7 @@ The command should return the following text:
 If the operating system does not display a graphical logon banner or the banner does not match the Standard Mandatory CMS Notice and Consent Banner, this is a finding.
 
 If the text in the "/etc/issue" file does not match the Standard Mandatory CMS Notice and Consent Banner, this is a finding.'
-	tag 'fix': 'Configure the operating system to display the Standard Mandatory CMS Notice and Consent Banner before granting access to the system via the command line by editing the "/etc/issue" file.
+	desc 'fix', 'Configure the operating system to display the Standard Mandatory CMS Notice and Consent Banner before granting access to the system via the command line by editing the "/etc/issue" file.
 
 Replace the default text with the Standard Mandatory CMS Notice and Consent Banner. The CMS required text is:
 
@@ -153,16 +153,16 @@ Replace the default text with the Standard Mandatory CMS Notice and Consent Bann
 	end
   
   control "V-71911" do
-  title "When passwords are changed a minimum of six of the total number of
+  title "The Red Hat Enterprise Linux operating system must be configured so that when passwords are changed a minimum of six of the total number of
 characters must be changed."
-  tag "check": "The \"difok\" option sets the number of characters in a
+  desc 'check', "The \"difok\" option sets the number of characters in a
 password that must not be present in the old password.
 Check for the value of the \"difok\" option in \"/etc/security/pwquality.conf\"
 with the following command:
 # grep difok /etc/security/pwquality.conf
 difok = 6
 If the value of \"difok\" is set to less than \"6\", this is a finding."
-  tag "fix": "Configure the operating system to require the change of at least
+  desc 'fix', "Configure the operating system to require the change of at least
 eight of the total number of characters when passwords are changed by setting
 the \"difok\" option.
 Add the following line to \"/etc/security/pwquality.conf\" (or modify the line
@@ -186,8 +186,8 @@ control 'V-71917' do
 end 
 
 control 'V-71933' do
-	title 'Passwords must be prohibited from reuse for a minimum of 6 generations.'
-	tag 'check': 'Verify the operating system prohibits password reuse for a minimum of 6 generations.
+	title 'The Red Hat Enterprise Linux operating system must be configured so that passwords must be prohibited from reuse for a minimum of 6 generations.'
+	desc 'check', 'Verify the operating system prohibits password reuse for a minimum of 6 generations.
 
 Check for the value of the "remember" argument in "/etc/pam.d/system-auth-ac" with the following command:
 
@@ -195,7 +195,7 @@ Check for the value of the "remember" argument in "/etc/pam.d/system-auth-ac" wi
 password sufficient pam_unix.so use_authtok sha512 shadow remember=6
 
 If the line containing the "pam_unix.so" line does not have the "remember" module argument set, or the value of the "remember" module argument is set to less than "6", this is a finding.'
-	tag 'fix': 'Configure the operating system to prohibit password reuse for a minimum of 6 generations.
+	desc 'fix', 'Configure the operating system to prohibit password reuse for a minimum of 6 generations.
 
 Add the following line in "/etc/pam.d/system-auth-ac" (or modify the line to have the required value):
 
@@ -206,13 +206,13 @@ control 'V-71941' do
 	desc 'Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.
 
 Operating systems need to track periods of inactivity and disable application identifiers after 60 days of inactivity.'
-	tag 'check': 'Verify the operating system disables account identifiers (individuals, groups, roles, and devices) after the password expires with the following command:
+	desc 'check', 'Verify the operating system disables account identifiers (individuals, groups, roles, and devices) after the password expires with the following command:
 
 # grep -i inactive /etc/default/useradd
 INACTIVE=60
 
 If the value is not set to "60", is commented out, or is not defined, this is a finding.'
-	tag 'fix': 'Configure the operating system to disable account identifiers (individuals, groups, roles, and devices) after the password expires.
+	desc 'fix', 'Configure the operating system to disable account identifiers (individuals, groups, roles, and devices) after the password expires.
 
 Add the following line to "/etc/default/useradd" (or modify the line to have the required value):
 
@@ -220,61 +220,114 @@ INACTIVE=60'
 	end
 
 control 'V-71943' do
-	title "Accounts subject to five unsuccessful logon attempts within 120 minutes must be locked for one hour."
-	tag 'check': 'Verify the operating system automatically locks an account for one hour.
-
-Check that the system locks an account for one hour after five unsuccessful logon attempts within a period of 120 minutes with the following command:
-
-# grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
-account required pam_faillock.so 
-
-If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.
-
-# grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=3600
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=3600
-account required pam_faillock.so 
-
-If the "unlock_time" setting is greater than "3600" on both lines with the "pam_faillock.so" module name or is missing from a line, this is a finding.'
-	tag 'fix': 'Configure the operating system to lock an account for one hour when five unsuccessful logon attempts in 120 minutes are made.
-
-Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
-
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-account required pam_faillock.so'
+	title "The Red Hat Enterprise Linux operating system must be configured to lock accounts for a minimum of 60 minutes after five unsuccessful logon attempts within a 120-minute timeframe."
+	  desc 'check', "
+	    Check that the system locks an account for a minimum of 60 minutes after
+	five unsuccessful logon attempts within a period of 120 minutes with the
+	following command:
+	    # grep pam_faillock.so /etc/pam.d/password-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"deny\" parameter is set to \"0\" or a value less than \"5\" on
+	both \"auth\" lines with the \"pam_faillock.so\" module, or is missing from
+	these lines, this is a finding.
+	    If the \"even_deny_root\" parameter is not set on both \"auth\" lines with
+	the \"pam_faillock.so\" module, or is missing from these lines, this is a
+	finding.
+	    If the \"fail_interval\" parameter is set to \"0\" or is set to a value
+	less than \"7200\" on both \"auth\" lines with the \"pam_faillock.so\" module,
+	or is missing from these lines, this is a finding.
+	    If the \"unlock_time\" parameter is not set to \"0\", \"never\", or is set
+	to a value less than \"3600\" on both \"auth\" lines with the
+	\"pam_faillock.so\" module, or is missing from these lines, this is a finding.
+	    Note: The maximum configurable value for \"unlock_time\" is \"604800\".
+	    If any line referencing the \"pam_faillock.so\" module is commented out,
+	this is a finding.
+	    # grep pam_faillock.so /etc/pam.d/system-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"deny\" parameter is set to \"0\" or a value less than \"3\" on
+	both \"auth\" lines with the \"pam_faillock.so\" module, or is missing from
+	these lines, this is a finding.
+	    If the \"even_deny_root\" parameter is not set on both \"auth\" lines with
+	the \"pam_faillock.so\" module, or is missing from these lines, this is a
+	finding.
+	    If the \"fail_interval\" parameter is set to \"0\" or is set to a value
+	less than \"7200\" on both \"auth\" lines with the \"pam_faillock.so\" module,
+	or is missing from these lines, this is a finding.
+	    If the \"unlock_time\" parameter is not set to \"0\", \"never\", or is set
+	to a value less than \"3600\" on both \"auth\" lines with the
+	\"pam_faillock.so\" module or is missing from these lines, this is a finding.
+	    Note: The maximum configurable value for \"unlock_time\" is \"604800\".
+	    If any line referencing the \"pam_faillock.so\" module is commented out,
+	this is a finding.
+	  "
+	  desc  'fix', "
+	    Configure the operating system to lock an account for 60 minutes
+	when five unsuccessful logon attempts in 120 minutes are made.
+	    Modify the first three lines of the auth section and the first line of the
+	account section of the \"/etc/pam.d/system-auth\" and
+	\"/etc/pam.d/password-auth\" files to match the following lines:
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth sufficient pam_unix.so try_first_pass
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    Note: Manual changes to the listed files may be overwritten by the
+	\"authconfig\" program. The \"authconfig\" program should not be used to update
+	the configurations listed in this requirement.
+	  "
 	end
 
 control 'V-71945' do
 	title 'If five unsuccessful root logon attempts within 120 minutes occur the associated account must be locked.'
-	tag 'check': 'Verify the operating system automatically locks the root account until it is released by an administrator when five unsuccessful logon attempts in 120 minutes are made.
-
-# grep pam_faillock.so /etc/pam.d/password-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
-account required pam_faillock.so
-
-If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.
-
-# grep pam_faillock.so /etc/pam.d/system-auth-ac
-auth required pam_faillock.so preauth silent audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600 
-auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root unlock_time=7200 fail_interval=3600
-account required pam_faillock.so
-
-If the "even_deny_root" setting is not defined on both lines with the "pam_faillock.so" module name, this is a finding.'
-	tag 'fix': 'Configure the operating system to automatically lock the root account until the locked account is released by an administrator when three unsuccessful logon attempts in 30 minutes are made.
-
-Modify the first three lines of the auth section of the "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" files to match the following lines:
-
-auth        required       pam_faillock.so preauth silent audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-auth        sufficient     pam_unix.so try_first_pass
-auth        [default=die]  pam_faillock.so authfail audit deny=5 even_deny_root fail_interval=7200 unlock_time=3600
-account required pam_faillock.so
-
-Note: Any updates made to "/etc/pam.d/system-auth-ac" and "/etc/pam.d/password-auth-ac" may be overwritten by the "authconfig" program. The "authconfig" program should not be used.'
+	  desc 'check', "
+	    Verify the operating system automatically locks the root account until it
+	is released by an administrator when five unsuccessful logon attempts in 120
+	minutes are made.
+	    # grep pam_faillock.so /etc/pam.d/password-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"even_deny_root\" setting is not defined on both lines with the
+	\"pam_faillock.so\" module, is commented out, or is missing from a line, this
+	is a finding.
+	    # grep pam_faillock.so /etc/pam.d/system-auth
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    If the \"even_deny_root\" setting is not defined on both lines with the
+	\"pam_faillock.so\" module, is commented out, or is missing from a line, this
+	is a finding.
+	  "
+	  desc  'fix', "
+	    Configure the operating system to lock automatically the root account until
+	the locked account is released by an administrator when five unsuccessful
+	logon attempts in 15 minutes are made.
+	    Modify the first three lines of the auth section and the first line of the
+	account section of the \"/etc/pam.d/system-auth\" and
+	\"/etc/pam.d/password-auth\" files to match the following lines:
+	    auth required pam_faillock.so preauth silent audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    auth sufficient pam_unix.so try_first_pass
+	    auth [default=die] pam_faillock.so authfail audit deny=5 even_deny_root
+	fail_interval=7200 unlock_time=3600
+	    account required pam_faillock.so
+	    Note: Manual changes to the listed files may be overwritten by the
+	\"authconfig\" program. The \"authconfig\" program should not be used to update
+	the configurations listed in this requirement.
+	  "
 	end
 
 control 'V-71947' do
@@ -313,11 +366,6 @@ control 'V-71979' do
 	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
 end
 
-control 'V-71981' do
-	impact 0.0
-	desc 'caveat', 'This is Not Applicable since the related security control is not applied to this system categorization in CMS ARS 3.1'
-end
-
 control 'V-71987' do
 	impact 0.0
 	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
@@ -344,11 +392,11 @@ control 'V-72009' do
 end
 
 control 'V-72067' do
-	tag 'check': 'Verify the operating system implements approved encryption to protect the confidentiality of remote access sessions.
+	desc 'check', 'Verify the operating system implements approved encryption to protect the confidentiality of remote access sessions.
 
 Check to see if the "dracut-fips" package is installed with the following command:
 
-# yum list installed | grep dracut-fips
+# yum list installed dracut-fips
 
 dracut-fips-033-360.el7_2.x86_64.rpm
 
@@ -365,7 +413,7 @@ If the kernel command line is configured to use FIPS mode, check to see if the s
 1
 
 If a "dracut-fips" package is not installed, the kernel command line does not have a fips entry, or the system has a value of "0" for "fips_enabled" in "/proc/sys/crypto", this is a finding.'
-	tag 'fix': 'Configure the operating system to implement approved encryption by installing the dracut-fips package.
+	desc 'fix', 'Configure the operating system to implement approved encryption by installing the dracut-fips package.
 
 To enable strict FIPS compliance, the fips=1 kernel option needs to be added to the kernel command line during system installation so key generation is done with FIPS-approved algorithms and continuous monitoring tests in place.
 
@@ -452,29 +500,27 @@ control 'V-72221' do
 
 Operating systems utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.
 
-FIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements. This allows for Security Levels 1, 2, 3, or 4 for use on a general purpose computing system."
+FIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets CMS requirements."
 	end	
 
 control 'V-72223' do
-	title 'All network connections associated with a communication session must be terminated at the end of the session or after 30 minutes of inactivity from the user at a command prompt, except to fulfill documented and validated mission requirements.'
-	tag 'check': 'Verify the operating system terminates all network connections associated with a communications session at the end of the session or based on inactivity.
+	title 'The Red Hat Enterprise Linux operating system must be configured so that all network connections associated with a communication session must be terminated at the end of the session or after 30 minutes of inactivity from the user at a command prompt, except to fulfill documented and validated mission requirements.'
+	desc 'check', 'Verify the operating system terminates all network connections associated with a communications session at the end of the session or based on inactivity.
 
 Check the value of the system inactivity timeout with the following command:
 
-# grep -i tmout /etc/bashrc /etc/profile.d/*
+# grep -i tmout /etc/profile.d/*
 
-TMOUT=1800
+etc/profile.d/tmout.sh:TMOUT=1800
 
-If "TMOUT" is not set to "1800" or less in "/etc/bashrc" or in a script created to enforce session termination after inactivity, this is a finding.'
-	tag 'fix': 'Configure the operating system to terminate all network connections associated with a communications session at the end of the session or after a period of inactivity.
+/etc/profile.d/tmout.sh:readonly TMOUT
 
-Add or update the following lines in "/etc/profile".
+/etc/profile.d/tmout.sh:export TMOUT
 
-TMOUT=1800
-readonly TMOUT
-export TMOUT
+If "TMOUT" is not set to "1800" or less in a script located in the /etc/profile.d/ directory to enforce session termination after inactivity, this is a finding.'
+	desc 'fix', 'Configure the operating system to terminate all network connections associated with a communications session at the end of the session or after a period of inactivity.
 
-Or create a script to enforce the inactivity timeout (for example /etc/profile.d/tmout.sh) such as:
+Create a script to enforce the inactivity timeout (for example /etc/profile.d/tmout.sh) such as:
 
 #!/bin/bash
 
@@ -484,7 +530,7 @@ export TMOUT'
 	end
 
 control 'V-72225' do
-	title 'The Standard Mandatory CMS Notice and Consent Banner must be displayed immediately prior to, or as part of, remote access logon prompts.'
+	title 'The Red Hat Enterprise Linux operating system must display the Standard Mandatory CMS Notice and Consent Banner must be displayed immediately prior to, or as part of, remote access logon prompts.'
 	desc 'Display of a standardized and approved use notification before granting access to the publicly accessible operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 System use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.
@@ -500,7 +546,7 @@ The banner must be formatted in accordance with applicable CMS policy. Use the f
 
 Satisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007 , SRG-OS-000228-GPOS-00088'
 	
-	tag 'check': 'Verify any publicly accessible connection to the operating system displays the Standard Mandatory CMS Notice and Consent Banner before granting access to the system.
+	desc 'check', 'Verify any publicly accessible connection to the operating system displays the Standard Mandatory CMS Notice and Consent Banner before granting access to the system.
 
 Check for the location of the banner file being used with the following command:
 
@@ -525,7 +571,7 @@ View the file specified by the banner keyword to check that it matches the text 
 If the system does not display a graphical logon banner or the banner does not match the Standard Mandatory CMS Notice and Consent Banner, this is a finding.
 
 If the text in the file does not match the Standard Mandatory CMS Notice and Consent Banner, this is a finding.'
-	tag 'fix': 'Configure the operating system to display the Standard Mandatory CMS Notice and Consent Banner before granting access to the system via the ssh.
+	desc 'fix', 'Configure the operating system to display the Standard Mandatory CMS Notice and Consent Banner before granting access to the system via the ssh.
 
 Edit the "/etc/ssh/sshd_config" file to uncomment the banner keyword and configure it to point to a file that will contain the logon banner (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor). An example configuration line is:
 
@@ -546,8 +592,8 @@ The SSH service must be restarted for changes to take effect.'
 
 
 control 'V-72237' do
-	title 'All network connections associated with SSH traffic must terminate at the end of the session or after 30 minutes of inactivity, except to fulfill documented and validated mission requirements.'
-	tag 'check': 'Verify the operating system automatically terminates a user session after inactivity time-outs have expired. 
+	title 'The Red Hat Enterprise Linux operating system must be configured so that all network connections associated with SSH traffic must terminate at the end of the session or after 30 minutes of inactivity, except to fulfill documented and validated mission requirements.'
+	desc 'check', 'Verify the operating system automatically terminates a user session after inactivity time-outs have expired. 
 
 Check for the value of the "ClientAliveInterval" keyword with the following command: 
 
@@ -558,7 +604,7 @@ ClientAliveInterval 1800
 If "ClientAliveInterval" is not configured, commented out, or has a value of "0", this is a finding. 
 
 If "ClientAliveInterval" has a value that is greater than "1800" and is not documented with the Information System Security Officer (ISSO) as an operational requirement, this is a finding.'
-	tag 'fix': 'Configure the operating system to automatically terminate a user session after inactivity time-outs have expired or at shutdown. 
+	desc 'fix', 'Configure the operating system to automatically terminate a user session after inactivity time-outs have expired or at shutdown. 
 
 Add the following line (or modify the line to have the required value) to the "/etc/ssh/sshd_config" file (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): 
 
@@ -572,6 +618,31 @@ control 'V-72253' do
 	end
 
 control 'V-73163' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81013' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81015' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81017' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81019' do
+	impact 0.0
+	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
+	end
+
+control 'V-81021' do
 	impact 0.0
 	desc 'caveat', 'This is Not Applicable since the related security control is not included in CMS ARS 3.1'
 	end
