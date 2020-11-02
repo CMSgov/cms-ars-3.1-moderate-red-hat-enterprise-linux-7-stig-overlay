@@ -187,9 +187,6 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 ## Contributing and Getting Help
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/issues/new).
 
-## License
-This is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license. 
-
 ### NOTICE  
 
 This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.  
