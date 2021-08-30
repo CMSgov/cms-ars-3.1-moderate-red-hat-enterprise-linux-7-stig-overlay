@@ -47,7 +47,7 @@ rpm_verify_integrity_except: []
 
 # Used by InSpec check V-72211 (default: false)
 # Do NOT set to 'true' UNLESS the server is documented as being used as a log aggregation server. 
-log_aggregation_server: 
+log_aggregation_server: false
 
 # Used by InSpec check V-72047 (default: [])
 # Known application groups that are allowed to have world-writeable files or directories
@@ -55,7 +55,7 @@ application_groups: []
 
 # Used by InSpec check V-72307 (default: false)
 # Do NOT set to 'true' UNLESS use of X Windows System is documented and approved. 
-x11_enabled: 
+x11_enabled: false
 
 # Accounts of known managed users (Array)
 user_accounts: []
@@ -144,19 +144,16 @@ The input `disable_slow_controls (bool: false)` can be set to `true` or `false` 
 
 Against a remote target using ssh with escalated privileges (i.e., cinc-auditor installed on a separate runner host)
 ```bash
-# How to run 
 cinc-auditor exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --sudo --sudo-password=<SUDO_PASSWORD_IF_REQUIRED> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 Against a remote target using a pem key with escalated privileges (i.e., cinc-auditor installed on a separate runner host)
 ```bash
-# How to run 
 cinc-auditor exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT --sudo -i <your_PEM_KEY> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json>  
 ```
 
 Against a local Red Hat host with escalated privileges (i.e., cinc-auditor installed on the target)
 ```bash
-# How to run
 sudo cinc-auditor exec https://github.com/CMSgov/cms-ars-3.1-moderate-red-hat-enterprise-linux-7-stig-overlay/archive/master.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 ### Different Run Options
